@@ -1,0 +1,1117 @@
+
+
+/* Overall Section Container */
+.premium-about {
+    background-color: #000000;
+    position: relative;
+    overflow: hidden;
+    padding: 0; /* Zero vertical padding as per image */
+}
+
+/* Left Content Column Spacing */
+.left-content-side {
+    padding: 50px 4% 50px 8%; /* Reduced padding for compact look */
+}
+.content-container {
+    max-width: 480px; /* Tight text layout width */
+}
+
+/* Text Stylings */
+.section-tag {
+    color: #b31919;
+    font-size: 1.05rem;
+    font-weight: 500;
+    display: block;
+    margin-bottom: 15px;
+}
+.section-tag .red-star {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}
+.section-title {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 2.8rem;
+    font-weight: 400;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+.section-desc {
+    color: #9c9c9c;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 30px;
+}
+
+/* Feature Grid Blocks */
+.feature-grid {
+    margin-top: 20px;
+}
+.mini-car-box {
+    background-color: #0d0d0d;
+    padding: 12px;
+    border: 1px solid #1a1a1a;
+}
+.mini-car-box img {
+    width: 100%;
+    height: 95px;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+.mini-text {
+    color: #8c8c8c;
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin: 0;
+}
+
+/* Stats Styling */
+.stats-box {
+    padding-left: 15px;
+}
+.stat-num {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 3rem;
+    font-weight: 400;
+    line-height: 1;
+    margin: 0;
+}
+.stat-num .plus {
+    color: #b31919;
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.6rem;
+    margin-left: 3px;
+}
+.stat-lbl {
+    color: #a6a6a6;
+    font-size: 0.85rem;
+    margin: 2px 0 0 0;
+}
+.stat-divider {
+    height: 1px;
+    background-color: #222222;
+    margin: 15px 0;
+    width: 80%;
+}
+
+/* RIGHT COLUMN: The exact image "Cut" engineering */
+.right-image-side {
+    position: relative;
+    background-color: #000000;
+    min-height: 480px; /* Fixed controlled height */
+    display: flex;
+    align-items: center;
+}
+
+/* White Backdrop shape that covers top-right frame */
+.white-cut-backdrop {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 85%; /* Doesn't touch left edge */
+    height: 90%; /* Doesn't touch bottom edge */
+    background-color: #ffffff;
+    z-index: 1;
+}
+
+/* Image Container shifting left and hanging down */
+.main-image-wrapper {
+    position: absolute;
+    left: -8%; /* Breaks slightly into the black side */
+    top: 30px; /* Aligned with space from top */
+    width: 80%;
+    height: 90%; /* Fixed height to match reference proportion */
+    z-index: 2;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    
+}
+.actual-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    
+}
+
+/* Floating Clean Social Icons Badge */
+.social-badge-strip {
+    position: absolute;
+    right: 5%;
+    bottom: 5%;
+    z-index: 3;
+    display: flex;
+    flex-direction: column;
+}
+.social-tile {
+    width: 38px;
+    height: 38px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff !important;
+    text-decoration: none;
+    font-size: 0.95rem;
+}
+.bg-red { background-color: #a11414; }
+.bg-grey { background-color: #444444; }
+.bg-dark-grey { background-color: #2b2b2b; }
+
+
+
+/* Glass Section Container with Real Background Image */
+.glass-services-section {
+    position: relative;
+    padding: 100px 0;
+    /* Replace below URL with your asset premium warehouse/truck/fleet image path */
+    background-image: url('image6.avif');
+    background-size: cover;
+    background-position: center;
+    opacity: 85%;
+    /* Parallax luxury effect */
+
+}
+
+/* Dark Rich Tint overlay to separate backdrop texture from cards clearly */
+.bg-dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+background: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.20) 100%);
+    z-index: 1;
+}
+
+.z-index-2 {
+    z-index: 2;
+}
+
+/* Typography Headings */
+.sub-title {
+    color: #c92222;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    display: inline-block;
+    margin-bottom: 12px;
+}
+.sub-title .star {
+    font-size: 1.2rem;
+    vertical-align: middle;
+}.main-title {
+    font-size: 4rem;
+    font-weight: 800;
+    letter-spacing: -1px;
+
+    background: linear-gradient(
+        135deg,
+        #f5f6f8 0%,
+        #e6e3e3 50%,
+        #e42504 100%
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+
+    text-shadow: 0 5px 20px rgba(102, 126, 234, 0.25);
+}
+
+/* --- THE GLASSMORMISM CARDS (Engineered from image_7906dc.png) --- */
+.luxury-glass-card {
+    position: relative;
+    /* Real Premium Semi-Transparent Glass backdrop */
+    background: rgba(18, 18, 18, 0.45); 
+    backdrop-filter: blur(14px) saturate(160%);
+    -webkit-backdrop-filter: blur(14px) saturate(160%);
+    
+    /* Elegant light refraction on glass edges */
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    border-radius: 0px; /* Sharp corners to match image_7906dc.png style perfectly */
+    padding: 45px 35px 40px 35px;
+    transition: all 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Subtle Hover lift and border reflection shift */
+.luxury-glass-card:hover {
+    transform: translateY(-8px);
+    background: rgba(24, 24, 24, 0.65);
+    border-color: rgba(201, 34, 34, 0.3); /* Lights up slightly with premium corporate red */
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Serial Number styling matching image_790a20.png style top corner */
+.card-number {
+    position: absolute;
+    top: 25px;
+    right: 30px;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.15);
+    font-weight: 500;
+    letter-spacing: 1px;
+}
+
+/* Tilted Icon Badge Layer directly pulled from image_7906dc.png */
+.icon-badge-tilt {
+    width: 62px;
+    height: 62px;
+    background: linear-gradient(145deg, #1f1f1f, #121212);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 12px;
+    transform: rotate(-10deg); /* The signature tilt look */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-bottom: 35px;
+    box-shadow: 3px 5px 15px rgba(0,0,0,0.4);
+    transition: transform 0.3s ease;
+}
+.luxury-glass-card:hover .icon-badge-tilt {
+    transform: rotate(0deg) scale(1.05);
+}
+
+/* SVG Inside Badge Formatting */
+.icon-badge-tilt svg {
+    width: 28px;
+    height: 28px;
+    color: #ffffff; /* Clean neutral light tone */
+    transition: color 0.3s ease;
+}
+.luxury-glass-card:hover .icon-badge-tilt svg {
+    color: #c92222; /* Changes to theme red on hover */
+}
+
+/* Card Typography */
+.service-name {
+    font-family: 'Playfair Display', serif;
+    color: #ffffff;
+    font-size: 1.6rem;
+    font-weight: 400;
+    margin-bottom: 15px;
+    letter-spacing: -0.2px;
+}
+.service-text {
+    color: #b0b0b0;
+    font-size: 0.9rem;
+    line-height: 1.6;
+    margin-bottom: 35px;
+    flex-grow: 1; /* Pushes button block to base line uniformly */
+}
+
+/* --- Premium Red Arrow Button System --- */
+.read-more-btn {
+    display: inline-flex;
+    align-items: center;
+    text-decoration: none !important;
+    color: #ffffff !important;
+    font-size: 0.9rem;
+    font-weight: 400;
+    letter-spacing: 0.5px;
+    width: fit-content;
+    transition: opacity 0.2s ease;
+}
+.read-more-btn span {
+    margin-right: 15px;
+    color: #cccccc;
+}
+.read-more-btn .arrow-box {
+    width: 26px;
+    height: 26px;
+    background-color: #c92222; /* Premium Red block */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 0;
+    transition: transform 0.3s ease;
+}
+.read-more-btn .arrow-box svg {
+    width: 12px;
+    height: 12px;
+    color: #ffffff;
+}
+.read-more-btn:hover .arrow-box {
+    transform: translateX(5px);
+}
+.read-more-btn:hover span {
+    color: #ffffff;
+}
+
+/* Section Base Setup - Pure Rich Dark No Image */
+.broad-faq-section {
+    background-color: #080808;
+    padding: 120px 0;
+    position: relative;
+}
+
+/* Left Sidebar Info Area */
+.faq-sticky-side {
+    position: -webkit-sticky;
+    position: sticky;
+    top: 60px;
+}
+.faq-badge-tag {
+    color: #8a8a8a;
+    font-size: 0.85rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.faq-badge-tag .star-icon {
+    color: #c92222;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+.faq-heading-text {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 3.8rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+.faq-heading-text .serif-style {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 400;
+}
+.faq-para-text {
+    color: #a0a0a0;
+    font-size: 0.99rem;
+    line-height: 1.65;
+    max-width: 380px;
+    margin-bottom: 35px;
+  
+}
+
+/* WhatsApp Pill Button */
+.whatsapp-link-btn {
+    display: inline-flex;
+    align-items: center;
+    background-color: #f1f0f0;
+    color: #fa0707 !important;
+    text-decoration: none !important;
+    font-size: 0.99rem;
+    font-weight: 600;
+    padding: 15px 30px;
+    border-radius: 50px;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+}
+.whatsapp-link-btn:hover {
+    transform: scale(1.03);
+    background-color: #f8f7f7;
+  
+}
+.whatsapp-link-btn .arrow-svg-wrap {
+    display: inline-flex;
+    margin-left: 10px;
+    transition: transform 0.3s ease;
+}
+.whatsapp-link-btn:hover .arrow-svg-wrap {
+    transform: translateX(4px);
+}
+
+/* --- BROAD WHITE ACCORDION DESIGN --- */
+.broad-white-accordion {
+    background: transparent;
+}
+
+/* Custom Broad White Cards With Dynamic Spacing/Height */
+.faq-broad-card {
+    background-color: #ffffffe0 !important; /* Pure White Solid Card */
+    border: none !important;
+    margin-bottom: 24px; /* Broad Margin spacing between items */
+    border-radius: 16px !important; /* Premium curved look */
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+    transition: background 0.4s ease, transform 0.3s ease;
+}
+
+/* Hover Effect: Changes to Luxury Dark Gradient */
+.faq-broad-card:hover {
+    transform: translateY(-3px);
+    background: linear-gradient(135deg, #580303 0%, #000000 100%) !important;
+}
+
+/* Clicked / Active State Integration (When Accordion is open) */
+.faq-broad-card:has(.accordion-button:not(.collapsed)) {
+    background: linear-gradient(135deg, #1a0303 0%, #000000 100%) !important;
+    box-shadow: 0 15px 35px rgba(201, 34, 34, 0.15);
+}
+
+/* Accordion Head Button Base Styles */
+.broad-white-accordion .accordion-button {
+    background: transparent !important;
+    color: #111111 !important; /* Bold crisp black on default white background */
+    font-size: 1.3rem;
+    font-weight: 500;
+    padding: 28px 30px; /* Enhanced internal broad height layout */
+    box-shadow: none !important;
+    transition: color 0.3s ease;
+}
+
+/* Title text color shifts to white when card is hovered or expanded */
+.faq-broad-card:hover .accordion-button,
+.broad-white-accordion .accordion-button:not(.collapsed) {
+    color: #ffffff !important;
+}
+
+/* Premium Minimal Circle Drop Indicator Icon */
+.broad-white-accordion .accordion-button::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23111111'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    background-size: 11px;
+    width: 32px;
+    height: 32px;
+    background-color: rgba(0, 0, 0, 0.05);
+    border: 1px solid rgba(0, 0, 0, 0.08);
+    border-radius: 50%;
+    background-position: center;
+    transition: all 0.3s ease;
+}
+
+/* Indicator adjustment on hover and open active cycles */
+.faq-broad-card:hover .accordion-button::after,
+.broad-white-accordion .accordion-button:not(.collapsed)::after {
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23ffffff'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e") !important;
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+.broad-white-accordion .accordion-button:not(.collapsed)::after {
+    transform: rotate(-180deg);
+}
+
+/* Accordion Expandable Inner Content Text */
+.broad-white-accordion .accordion-body {
+    padding: 0 30px 28px 30px;
+    color: #d1d1d1; /* Light grey text reads perfectly inside dark gradient frame */
+    font-size: 0.99rem;
+    line-height: 1.7;
+}
+/* Infinite Luxury Moving Marquee Section Start */
+.luxury-marquee-wrapper {
+    /* Maza dilane wala rich dynamic gradient background */
+    background: linear-gradient(135deg, #1f0303 0%, #0a0a0a 50%, #170202 100%);
+    padding: 35px 0; /* Broad layout spacing */
+    overflow: hidden;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    /* Subtle premium dark borders to trap the glow */
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.8);
+}
+
+/* Container locking the flex layout */
+.marquee-container {
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+}
+
+/* THE SEAMLESS ENGINE: Hardware Accelerated Smooth Motion */
+.marquee-track {
+    display: flex;
+    align-items: center;
+    white-space: nowrap;
+    will-change: transform;
+    animation: luxuryMarqueeLoop 25s linear infinite;
+}
+
+/* Individual Content Pieces Styling */
+.marquee-item {
+    font-family: 'Poppins', sans-serif;
+    color: #e0e0e0; /* Premium off-white text for high contrast on dark gradient */
+    font-size: 1.35rem;
+    font-weight: 400;
+    padding: 0 45px; /* Broad gap margin */
+    display: inline-flex;
+    align-items: center;
+    letter-spacing: 0.5px;
+}
+
+/* High-Gloss Glow Effect for numbers */
+.marquee-item .stat-highlight {
+    font-family: 'Playfair Display', serif;
+    font-weight: 700;
+    color: #ff3333; /* Neon/Bright premium red to punch through the dark gradient */
+    margin-right: 12px;
+    font-size: 1.9rem;
+    text-shadow: 0 0 15px rgba(255, 51, 51, 0.3); /* Soft subtle glow */
+}
+
+/* Luxury Separator Dot */
+.marquee-item-dot {
+    color: rgba(255, 255, 255, 0.15);
+    font-size: 1.2rem;
+    user-select: none;
+}
+
+/* --- THE ZERO-GLITCH KEYFRAME ENGINE --- */
+@keyframes luxuryMarqueeLoop {
+    0% {
+        transform: translate3d(0, 0, 0);
+    }
+    100% {
+        transform: translate3d(-50%, 0, 0);
+    }
+}
+
+/* Premium Interaction: Pause animation on cursor hover */
+.luxury-marquee-wrapper:hover .marquee-track {
+    animation-play-state: paused;
+}
+/* --- ESTIMATE QUOTE BASE WRAPPER --- */
+.premium-quote-section {
+    background-color: #79747402;
+    background-image: url('https://images.unsplash.com/photo-1449824913935-59a10b8d2000?w=1600&q=80');
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    padding: 120px 0;
+}
+
+/* Deep Solid-Overlay Matrix over BG Image */
+.quote-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(10, 2, 2, 0.94) 0%, rgba(5, 5, 5, 0.92) 60%, rgba(0, 0, 0, 0.95) 100%);
+    z-index: 1;
+}
+
+.z-index-5 {
+    z-index: 5;
+}
+
+/* Left Column Styling */
+.quote-sub-badge {
+    color: #969696;
+    font-size: 0.96rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    display: inline-block;
+    margin-bottom: 15px;
+}
+.quote-sub-badge .star-accent {
+    color: #ff3333;
+    font-size: 1.1rem;
+    vertical-align: middle;
+}
+.quote-main-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -1px;
+    margin-bottom: 25px;
+}
+.quote-main-title .serif-italic {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    font-weight: 500;
+    color: #ff3333;
+}
+.quote-desc-text {
+    color: #a3a3a3;
+    font-size: 0.99rem;
+    line-height: 1.65;
+    max-width: 380px;
+    margin-bottom: 45px;
+}
+
+/* Contact Blocks Setup */
+.quote-contact-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.contact-item-row {
+    gap: 15px;
+}
+.contact-icon-box {
+    width: 44px;
+    height: 44px;
+    background-color: rgba(255, 51, 51, 0.04);
+    border: 1px solid rgba(255, 51, 51, 0.12);
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.contact-main-value {
+    color: #ffffff;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.2px;
+}
+.contact-label-tag {
+    color: #757575;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-top: 1px;
+}
+
+/* --- RIGHT SIDE: UPGRADED LINEAR GRADIENT FORM CARD --- */
+.quote-form-card {
+    /* Pure white ko replace karke premium dark corporate linear gradient set kiya */
+    background: linear-gradient(135deg, #160404 0%, #0c0c0c 100%) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 24px;
+    padding: 50px; /* Internal layout broad kiya */
+    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.6);
+}
+
+/* Form Head Labels Text Size Increased */
+.input-form-label {
+    display: block;
+    color: #bfaaaa; /* Subtle red-tinted warm grey for high readability */
+    font-size: 0.85rem; /* Size barha diya gaya hai (Pehle 0.75rem tha) */
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin-bottom: 10px;
+    padding-left: 2px;
+}
+
+/* Form Inputs Text Size & Layout Increased */
+.premium-form-input {
+    width: 100%;
+    background-color: rgba(255, 255, 255, 0.03) !important; /* Semi-dark base input fields */
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    color: #ffffff !important; /* Crispy white input text */
+    font-size: 1.05rem; /* Input font size barha diya (Pehle 0.92rem tha) */
+    padding: 18px 20px; /* Padding barha di taake items broad aur bold lagyein */
+    border-radius: 14px;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+/* Input Fields placeholder font size adjustment */
+.premium-form-input::placeholder {
+    color: rgba(255, 255, 255, 0.35) !important;
+    font-size: 1.05rem;
+}
+
+/* Special calendar/date type styling patch for dark mode browsers */
+.premium-form-input[type="date"]::-webkit-calendar-picker-indicator {
+    filter: invert(1); /* Calendar icon ko dark theme ke mutabik white kiya */
+    cursor: pointer;
+}
+
+/* Focus States Overrides */
+.premium-form-input:focus {
+    background-color: rgba(255, 255, 255, 0.06) !important;
+    border-color: rgba(255, 51, 51, 0.6) !important; /* Glowing brand border focus */
+    box-shadow: 0 0 0 5px rgba(255, 51, 51, 0.15) !important;
+}
+
+/* Dropdown styling arrow config patch for dark fields */
+.form-select-custom {
+    cursor: pointer;
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3e%3cpath fill='none' stroke='%23ffffff' stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M2 5l6 6 6-6'/%3e%3c/svg%3e") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 20px center !important;
+    background-size: 14px 14px !important;
+    padding-right: 45px;
+}
+
+/* Select option dropdown text color fix for chrome/safari native layers */
+.form-select-custom option {
+    background-color: #0c0c0c !important;
+    color: #ffffff !important;
+}
+
+/* --- THE CORPORATE SUBMISSION ENGINE --- */
+.premium-submit-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #ff3333 0%, #e0a2a2 100%);
+    color: #ffffff;
+    font-size: 1.09rem; /* Button font text size increased */
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    border: none;
+    padding: 20px; /* Broad click heights */
+    border-radius: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    cursor: pointer;
+    box-shadow: 0 6px 25px rgba(255, 51, 51, 0.25);
+    transition: all 0.35s ease;
+}
+
+/* Submission Hover States */
+.premium-submit-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 14px 32px rgba(255, 51, 51, 0.45);
+    background: linear-gradient(135deg, #ff4444 0%, #ca1414 100%);
+}
+.premium-submit-btn .btn-arrow {
+    transition: transform 0.3s ease;
+    font-size: 1.15rem;
+}
+.premium-submit-btn:hover .btn-arrow {
+    transform: translateX(5px);
+}
+.premium-footer {
+    position: relative;
+    background-color: #050505;
+    /* Version tag (?v=2) browser cache ko bypass karne ke liye */
+
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    padding-top: 50px;
+}
+
+/* Deep Red/Black Luxury Matte Vignette Overlay */
+.footer-bg-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(180deg, 
+        rgba(2, 2, 2, 0.96) 0%, 
+        rgba(39, 5, 5, 0.94) 50%, 
+        rgba(32, 1, 1, 0.884) 100%);
+    z-index: 1;
+}
+
+.z-index-5 {
+    z-index: 5;
+}
+
+/* Footer Top CTA Elements */
+.footer-cta-title {
+    font-family: 'Poppins', sans-serif;
+    color: #ffffff;
+    font-size: 4rem;
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -1.5px;
+}
+.footer-cta-title .serif-italic-red {
+    font-family: 'Playfair Display', serif;
+    font-style: italic;
+    color: #ff3333; 
+    font-weight: 400;
+}
+
+/* CTA Pill Button Action Details */
+.footer-cta-btn {
+    background-color: rgba(255, 255, 255, 0.03) !important;
+    border: 1px solid rgba(255, 255, 255, 0.1) !important;
+    color: #ffffff !important;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: all 0.3s ease !important;
+}
+.footer-cta-btn .btn-icon-svg {
+    color: #ff3333; 
+    transition: transform 0.3s ease;
+}
+.footer-cta-btn:hover {
+    background-color: #ff3333 !important;
+    border-color: #ff3333 !important;
+    box-shadow: 0 10px 25px rgba(255, 51, 51, 0.3);
+}
+.footer-cta-btn:hover .btn-icon-svg {
+    color: #ffffff !important;
+    transform: rotate(15deg);
+}
+
+/* --- THE LOGO FIX: PERFECT RESPONSIVE BOUNDING CARD --- */
+.footer-logo-box {
+    width: 100%;
+    max-width: 180px; /* Limits the max size of logo layout */
+    height: 75px;
+    border: 1px dashed rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.02);
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    padding: 10px;
+    overflow: hidden;
+}
+/* Ensures that any real logo image scales perfectly inside without layout breaks */
+.footer-logo-box img {
+    max-width: 100% !important;
+    max-height: 100% !important;
+    object-fit: contain !important; /* Prevents logo image stretching */
+    display: block;
+}
+.logo-placeholder-text {
+    font-family: monospace;
+    font-size: 0.72rem;
+    color: #666666;
+    letter-spacing: 2px;
+}
+
+.footer-brand-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #ffffff;
+    letter-spacing: -0.5px;
+}
+.footer-brand-sub {
+    font-size: 1.1rem;
+    color: #ff3333; 
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-top: -2px;
+}
+.footer-brand-desc {
+    color: #8c8c8c;
+    font-size: 0.99rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Social Circular Hub Links */
+.footer-social-icon {
+    width: 43px;
+    height: 42px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #8c8c8c;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    transition: all 0.3s ease;
+}
+.footer-social-icon:hover {
+    color: #ffffff;
+    border-color: rgba(255, 51, 51, 0.5);
+    background-color: rgba(255, 51, 51, 0.1);
+}
+
+/* Inner Navigation Menus */
+.footer-grid-heading {
+    font-size: 1.1rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #666666;
+    letter-spacing: 2px;
+    margin-bottom: 22px;
+}
+.footer-links-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+.footer-links-list a {
+    color: #8c8c8c;
+    font-size: 1.00rem;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+.footer-links-list a:hover {
+    color: #f7f3f3;
+}
+
+/* Icons box handling structure */
+.footer-icon-box {
+    width: 20px !important;
+    height: 20px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    flex-shrink: 0 !important;
+}
+.footer-icon-box svg {
+    width: 100% !important;
+    height: 100% !important;
+    display: block !important;
+}
+.icon-red-tint {
+    color: #ff3333 !important;
+}
+.contact-text-node {
+    white-space: nowrap !important; 
+    font-size: 0.99rem;
+    color: #8c8c8c;
+}
+
+/* Bottom WhatsApp Primary Box Trigger */
+.footer-whatsapp-action {
+    background-color: #ffffff !important;
+    color: #060606 !important;
+    border: none !important;
+    font-size: 0.99rem;
+    font-weight: 600;
+    padding: 12px 24px;
+    max-width: 220px;
+    box-shadow: 0 4px 15px rgba(255, 255, 255, 0.05);
+    transition: all 0.3s ease !important;
+}
+.footer-whatsapp-action .arrow-icon {
+    color: #ff3333;
+    transition: transform 0.3s ease;
+}
+.footer-whatsapp-action:hover {
+    background-color: #ff3333 !important;
+    color: #ffffff !important;
+    box-shadow: 0 8px 20px rgba(255, 51, 51, 0.3);
+}
+.footer-whatsapp-action:hover .arrow-icon {
+    color: #ffffff;
+    transform: translateX(4px);
+}
+
+/* Copyright Row details configurations */
+.copyright-text {
+    font-size: 0.88rem;
+    color: #555555;
+}
+.copyright-text a {
+    color: #777777;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+.copyright-text a:hover {
+    color: #ff3333;
+}
+.indicator-text {
+    font-size: 0.78rem;
+    color: #666666;
+    letter-spacing: 0.3px;
+}
+/* Green Dot Size and Flex Control */
+.live-indicator-box .h-2 {
+    width: 8px !important;
+    height: 8px !important;
+}
+.live-indicator-box .w-2 {
+    width: 8px !important;
+    height: 8px !important;
+}
+
+/* Smooth Pulsing/Blinking Animation Loop */
+.animate-ping {
+    animation: ping 1.5s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+
+@keyframes ping {
+    75%, 100% {
+        transform: scale(2);
+        opacity: 0;
+    }
+}
+/* --- RESPONSIVE MODIFIERS MATRIX --- */
+@media (max-width: 991px) {
+    .contact-text-node { white-space: normal !important; }
+}
+
+@media (max-width: 767px) {
+    .footer-cta-title { font-size: 2.5rem; }
+    .footer-grid-heading { margin-bottom: 15px; margin-top: 15px; }
+}
+
+@media (max-width: 575px) {
+    .footer-whatsapp-action { max-width: 100%; }
+    .live-indicator-box { justify-content: center !important; }
+    .contact-text-node { font-size: 0.85rem; }
+    .footer-icon-box { width: 18px !important; height: 18px !important; }
+    .footer-logo-box { max-width: 150px; height: 65px; } /* Slightly scales logo container on mobile views */
+}
+/* --- RESPONSIVE CONFIG ENGINE --- */
+@media (max-width: 991px) {
+    .premium-quote-section { padding: 80px 0; }
+    .quote-main-title { font-size: 2.6rem; }
+    .quote-form-card { padding: 35px 25px; border-radius: 20px; }
+    .quote-desc-text { margin-bottom: 35px; }
+}
+@media (max-width: 575px) {
+    .quote-main-title { font-size: 2.2rem; }
+    .premium-form-input { padding: 15px; font-size: 0.98rem; }
+    .premium-form-input::placeholder { font-size: 0.98rem; }
+    .input-form-label { font-size: 0.8rem; }
+    .premium-submit-btn { padding: 18px; font-size: 0.98rem; }
+}
+/* --- RESPONSIVE ENGINE --- */
+@media (max-width: 991px) {
+    .luxury-marquee-wrapper { padding: 25px 0; }
+    .marquee-item { font-size: 1.15rem; padding: 0 30px; }
+    .marquee-item .stat-highlight { font-size: 1.5rem; }
+}
+@media (max-width: 575px) {
+    .luxury-marquee-wrapper { padding: 20px 0; }
+    .marquee-item { font-size: 1rem; padding: 0 20px; }
+    .marquee-item .stat-highlight { font-size: 1.3rem; }
+}
+
+/* --- RESPONSIVE ADAPTATIONS --- */
+@media (max-width: 991px) {
+    .broad-faq-section { padding: 80px 0; }
+    .faq-sticky-side { position: relative; top: 0; margin-bottom: 45px; }
+    .faq-heading-text { font-size: 2.6rem; }
+    .broad-white-accordion .accordion-button { padding: 22px 24px; font-size: 0.98rem; }
+    .broad-white-accordion .accordion-body { padding: 0 24px 22px 24px; }
+}
+/* --- Responsive Engine --- */
+@media (max-width: 991px) {
+    .main-title { font-size: 2.4rem; }
+    .luxury-glass-card { padding: 35px 25px; }
+}
+@media (max-width: 575px) {
+    .glass-services-section { padding: 60px 0; }
+    .main-title { font-size: 2rem; }
+}
+/* --- MODERN RESPONSIVE ENGINE (Small Screens Optimization) --- */
+@media (max-width: 991px) {
+    .left-content-side {
+        padding: 50px 5%;
+    }
+    .right-image-side {
+        min-height: auto;
+        padding: 20px 5% 50px 5%;
+    }
+    /* Disable complex absolute cutting on mobile for a unified experience */
+    .white-cut-backdrop {
+        display: none; 
+    }
+    .main-image-wrapper {
+        position: relative;
+        left: 0;
+        top: 0;
+        width: 100%;
+        height: 320px;
+    }
+    .social-badge-strip {
+        position: relative;
+        flex-direction: row;
+        right: 0;
+        bottom: 0;
+        justify-content: center;
+        margin-top: 20px;
+    }
+    .social-tile {
+        margin: 0 4px;
+    }
+}
+
+@media (max-width: 575px) {
+    .section-title { font-size: 2.2rem; }
+    .stat-num { font-size: 2.5rem; }
+}

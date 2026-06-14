@@ -1,0 +1,1003 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Safe & Secure Motors</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    :root {
+      --red: #c0000c;
+      --black: #000000;
+      --dark: #0e0e0e;
+      --white: #f0f0f0;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      background: var(--black);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ══════════ NAVBAR ══════════ */
+    .site-nav {
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      align-items: stretch;
+      height: 72px;
+    }
+
+    /* Red hamburger block — top left */
+    .nav-hamburger {
+      width: 80px;
+      background: var(--red);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      flex-shrink: 0;
+      border: none;
+      outline: none;
+    }
+    .nav-hamburger span,
+    .nav-hamburger span::before,
+    .nav-hamburger span::after {
+      display: block;
+      width: 24px;
+      height: 2px;
+      background: #fff;
+      position: relative;
+      transition: all 0.3s;
+    }
+    .nav-hamburger span::before,
+    .nav-hamburger span::after {
+      content: '';
+      position: absolute;
+    }
+    .nav-hamburger span::before { top: -7px; }
+    .nav-hamburger span::after  { top:  7px; }
+
+    /* Logo — top right, partially cut by viewport edge */
+    .nav-logo {
+      margin-left: auto;
+      display: flex;
+      align-items: center;
+      background: rgba(255,255,255,0.97);
+      padding: 0.4rem 2rem 0.4rem 1.5rem;
+      /* Push it so it slightly overflows on right like in screenshot */
+      margin-right: -2px;
+      position: relative;
+    }
+    .nav-logo-text {
+      font-family: 'Cinzel', serif;
+      font-size: 1.6rem;
+      font-weight: 700;
+      color: #111;
+      letter-spacing: 0.04em;
+      line-height: 1;
+    }
+    .nav-logo-text span { color: var(--red); }
+    .nav-logo-sub {
+      font-size: 0.6rem;
+      color: #555;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-top: 2px;
+    }
+    .nav-logo-icon {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      border: 2px solid #c0000c;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 0.75rem;
+      flex-shrink: 0;
+    }
+    .nav-logo-icon svg { width: 28px; height: 28px; fill: var(--red); }
+
+    /* ══════════ OFFCANVAS ══════════ */
+    .offcanvas {
+      background: #0d0d0d !important;
+      border-right: 1px solid rgba(192,0,12,0.25) !important;
+      width: 280px !important;
+    }
+    .offcanvas-header { border-bottom: 1px solid rgba(192,0,12,0.15); }
+    .offcanvas-title {
+      font-family: 'Cinzel', serif;
+      color: var(--white);
+      font-size: 0.95rem;
+      letter-spacing: 0.1em;
+    }
+    .btn-close { filter: invert(1) sepia(1) saturate(5) hue-rotate(300deg); }
+    .offcanvas .nav-link {
+      color: rgba(240,240,240,0.7) !important;
+      font-size: 0.85rem;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 0.85rem 1.2rem;
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      transition: color 0.2s, padding-left 0.25s;
+    }
+    .offcanvas .nav-link:hover {
+      color: var(--red) !important;
+      padding-left: 1.8rem;
+    }
+
+    /* ══════════ HERO ══════════ */
+    .hero {
+      position: relative;
+      width: 100%;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      overflow: hidden;
+      background: var(--black);
+    }
+    
+
+    /* ── BACKGROUND IMAGE
+         Replace the gradient below with your image.
+         Just add:  background-image: url('your-photo.jpg');
+         and keep background-size / position / the ::after overlay.
+    ── */
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      /* ↓ swap this with your image */
+      background: linear-gradient(120deg, #000 0%, #111 30%, #1c1c1c 60%, #252525 100%);
+       background-image: url('image2.jpg'); 
+      background-size: cover;
+      background-position: center right;
+      opacity: 75%;
+    }
+    /* dark left-side vignette so text stays readable */
+    .hero-bg::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(
+        100deg,
+        rgba(0,0,0,0.88) 0%,
+        rgba(0,0,0,0.55) 40%,
+        rgba(0,0,0,0.10) 100%
+      );
+    }
+
+    /* ══════════ CONTENT ══════════ */
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      padding-top: 50px;   /* clear the navbar */
+      padding-bottom: 60px;
+      
+    }
+ @media (max-width: 768px) {
+      .hero-content { padding-top: 90px; padding-bottom: 40px; }
+
+    }
+ @media (min-width: 720px) {
+      .hero-content { padding-top: 90px; padding-bottom: 40px; }
+
+    }
+    /* Big headline */
+    .hero-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(6rem, 14vw, 11rem);
+      line-height: 0.88;
+      color: var(--white);
+      letter-spacing: -0.015em;
+      margin-bottom: 2rem;
+    }
+    .hero-title .accent-g {
+      color: var(--red);
+      font-style: italic;
+      font-weight: 400;
+    }
+
+    /* "In Motion." line */
+    .hero-line2 {
+      font-family: 'Cormorant Garamond', serif;
+      font-weight: 300;
+      font-size: clamp(6rem, 12vw, 10rem);
+      line-height: 1;
+      color: var(--white);
+      letter-spacing: -0.01em;
+      margin-bottom: 2rem;
+    }
+    .hero-line2 .script-in {
+      font-family: 'Dancing Script', cursive;
+      color: var(--red);
+      font-size: 0.9em;
+      font-weight: 600;
+      margin-right: 0.08em;
+      letter-spacing: 0;
+    }
+
+    /* ══════════ BADGE ROW ══════════ */
+    .badge-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0;
+      margin-bottom: 2rem;
+    }
+
+    /* Two rotated cards stacked/overlapping */
+    .badge-cards-wrap {
+      display: flex;
+      position: relative;
+      width: 110px;
+      height: 68px;
+      flex-shrink: 0;
+      margin-right: 1.4rem;
+      align-self: center;
+    }
+
+    .badge-card {
+      width: 58px;
+      height: 64px;
+      background: rgba(109, 101, 101, 0.123);
+    
+      border-radius: 9px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: absolute;
+      transition: border-color 0.25s;
+    }
+    .badge-card:hover { border-color: rgba(192,0,12,0.6); }
+
+    /* First card — tilted counter-clockwise */
+    .badge-card:nth-child(1) {
+      transform: rotate(-10deg);
+      left: 0;
+      z-index: 1;
+    }
+    /* Second card — tilted clockwise, overlaps first */
+    .badge-card:nth-child(2) {
+      transform: rotate(8deg);
+      left: 36px;
+      z-index: 2;
+    }
+
+    .badge-card svg {
+      width: 26px;
+      height: 26px;
+      fill: var(--white);
+      opacity: 0.88;
+    }
+
+    /* Description beside the cards */
+    .badge-desc {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.98rem;
+      color: rgba(240,240,240,0.75);
+      line-height: 1.6;
+      max-width: 380px;
+    }
+
+    /* ══════════ READ MORE BUTTON ══════════ */
+    .btn-read-more {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: transparent;
+      color: var(--white);
+      border: 1px solid rgba(240,240,240,0.55);
+      padding: 0.7rem 1.8rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 500;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      text-decoration: none;
+      transition: background 0.25s, border-color 0.25s, color 0.25s;
+      cursor: pointer;
+      border-radius: 0;
+    }
+    .btn-read-more:hover {
+      background: var(--red);
+      border-color: var(--red);
+      color: #fff;
+    }
+    .btn-read-more .arrow {
+      font-size: 1.1rem;
+      line-height: 1;
+    }
+
+    /* ══════════ RESPONSIVE ══════════ */
+    @media (max-width: 768px) {
+      .hero-content { padding-top: 90px; padding-bottom: 40px; }
+      .hero-title  { line-height: 0.92; }
+      .badge-desc  { font-size: 0.8rem; }
+    }
+    @media (max-width: 480px) {
+      .nav-logo-text { font-size: 1.1rem; }
+      .nav-logo-icon { width: 38px; height: 38px; }
+      .badge-row { flex-wrap: wrap; }
+    }
+    
+  </style>
+</head>
+<body>
+
+<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
+<nav class="site-nav">
+
+  <!-- Red hamburger → triggers offcanvas -->
+  <button class="nav-hamburger"
+          data-bs-toggle="offcanvas"
+          data-bs-target="#navOffcanvas"
+          aria-label="Open menu">
+    <span></span>
+  </button>
+
+  <!-- Logo top-right (white background box, slightly cuts viewport edge) -->
+  <div class="nav-logo">
+    <div class="nav-logo-icon">
+      <!-- Truck / Motor SVG emblem -->
+      <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+      </svg>
+    </div>
+    <div>
+
+    </div>
+  </div>
+</nav>
+
+<!-- ═══════════════════════ OFFCANVAS (left slide) ═══════════════════════ -->
+<div class="offcanvas offcanvas-start" tabindex="-1" id="navOffcanvas">
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title">Safe &amp; Secure Motors</h5>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas"></button>
+  </div>
+  <div class="offcanvas-body p-0">
+    <ul class="navbar-nav flex-column mt-1">
+      <li class="nav-item"><a class="nav-link" href="#">Home</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Fleet</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Services</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">About</a></li>
+      <li class="nav-item"><a class="nav-link" href="#">Gallery</a></li>
+      <li class="nav-item"><a class="nav-link" href="#" style="color:var(--red)!important;font-weight:500;">Book Now</a></li>
+    </ul>
+  </div>
+</div>
+
+<!-- ═══════════════════════ HERO ═══════════════════════ -->
+<section class="hero">
+
+  <!--
+    ╔══════════════════════════════════════════════╗
+    ║  BANNER IMAGE — ADD YOUR IMAGE HERE          ║
+    ║                                              ║
+    ║  Option A (CSS — recommended):               ║
+    ║  In .hero-bg, replace the gradient line with:║
+    ║  background-image: url('your-photo.jpg');    ║
+    ║                                              ║
+    ║  Option B (HTML img tag):                    ║
+    ║  Add inside .hero-bg div:                    ║
+    ║  <img src="your-photo.jpg"                   ║
+    ║       style="width:100%;height:100%;         ║
+    ║              object-fit:cover;               ║
+    ║              object-position:center right">  ║
+    ╚══════════════════════════════════════════════╝
+  -->
+  <div class="hero-bg"></div>
+
+  <!-- CONTENT -->
+  <div class="container-fluid px-4 px-sm-5 hero-content">
+    <div class="row">
+      <div class="col-12 col-md-10 col-lg-8 col-xl-7">
+
+        <!-- "Elegance" -->
+        <h1 class="hero-title">
+          <span class="accent-g">Safe</span>
+        </h1>
+
+        <!-- "In Motion." -->
+        <div class="hero-line2">
+          <span class="script-in">&</span>Secure
+        </div>
+
+        <!-- Badge cards + description -->
+        <div class="badge-row">
+
+          <!-- Two tilted cards -->
+          <div class="badge-cards-wrap">
+            <!-- Card 1 -->
+            <div class="badge-card">
+              <!-- Truck icon -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+              </svg>
+            </div>
+            <!-- Card 2 -->
+            <div class="badge-card">
+              <!-- Truck icon -->
+              <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 8h-3V4H3c-1.1 0-2 .9-2 2v11h2c0 1.66 1.34 3 3 3s3-1.34 3-3h6c0 1.66 1.34 3 3 3s3-1.34 3-3h2v-5l-3-4zM6 18.5c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5zm13.5-9l1.96 2.5H17V9.5h2.5zm-1.5 9c-.83 0-1.5-.67-1.5-1.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+              </svg>
+            </div>
+          </div>
+
+          <!-- Description -->
+          <p class="badge-desc">
+            Your premium trusted partner for stress-free relocation across Dubai, Al Ain, Abu Dhabi, Sharjah & beyond. We execute every logistical transition with absolute precision.
+          </p>
+        </div>
+
+        <!-- Read More button -->
+        <a href="#" class="btn-read-more">
+          Read More <span class="arrow">›</span>
+        </a>
+
+      </div>
+    </div>
+  </div>
+</section>
+<main>
+    <section class="premium-about">
+    <div class="container-fluid p-0">
+        <div class="row g-0">
+            
+            <div class="col-lg-6 d-flex align-items-center left-content-side">
+                <div class="content-container">
+                    <span class="section-tag"><span class="red-star">*</span> About Us</span>
+                    <h2 class="section-title">Where Every Ride <br> Feels First Class</h2>
+                    <p class="section-desc">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut elit tellus, luctus nec ullamcorper mattis, pulvinar dapibus leo.</p>
+                    
+                    <div class="row feature-grid g-3">
+                        <div class="col-sm-6">
+                            <div class="mini-car-box">
+                                <img src="image5.jpg" alt="Car" class="img-fluid">
+                                <p class="mini-text">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="stats-box">
+                                <div class="stat-row">
+                                    <h3 class="stat-num">23<span class="plus">+</span></h3>
+                                    <p class="stat-lbl">Experiance</p>
+                                </div>
+                                <div class="stat-divider"></div>
+                                <div class="stat-row">
+                                    <h3 class="stat-num">23<span class="plus">+</span></h3>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6 right-image-side">
+                <div class="white-cut-backdrop"></div>
+                
+                <div class="main-image-wrapper">
+                    <img src="image3.jpg" alt="Driver" class="img-fluid actual-img">
+                </div>
+                
+                <div class="social-badge-strip">
+                    <a href="#" class="social-tile bg-red"><i class="fab fa-instagram"></i></a>
+                    <a href="#" class="social-tile bg-grey"><i class="fab fa-linkedin-in"></i></a>
+                    <a href="#" class="social-tile bg-dark-grey"><i class="fab fa-twitter"></i></a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<section class="glass-services-section">
+    <!-- Overlay to keep background image elegant and high-contrast -->
+    <div class="bg-dark-overlay"></div>
+
+    <div class="container position-relative z-index-2">
+        
+        <!-- Section Header -->
+        <div class="text-center mb-5">
+            <span class="sub-title"><span class="star">*</span> Premium Solutions</span>
+            <h2 class="main-title">Professional Services</h2>
+        </div>
+
+        <div class="row g-4">
+            
+            <!-- Card 1: Transportation -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">01</span>
+                    <div class="icon-badge-tilt">
+                        <!-- Truck / Transportation SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="11" width="13" height="9" rx="2" />
+                            <path d="M15 13h4l3 3v4h-7v-7z" />
+                            <circle cx="6.5" cy="19.5" r="1.5" fill="currentColor"/>
+                            <circle cx="16.5" cy="19.5" r="1.5" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Transportation</h3>
+                    <p class="service-text">Safe, tracked, and on-time delivery across the UAE with our modern fleet.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 2: Household Moving -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">02</span>
+                    <div class="icon-badge-tilt">
+                        <!-- House / Moving SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" />
+                            <polyline points="9 22 9 12 15 12 15 22" />
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Household Moving</h3>
+                    <p class="service-text">Expert team ensures a safe and secure transition for all your home belongings.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 3: Commercial Movers -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">03</span>
+                    <div class="icon-badge-tilt">
+                        <!-- Briefcase / Commercial SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+                            <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Commercial Movers</h3>
+                    <p class="service-text">Top-tier commercial moving with minimal downtime and maximum efficiency.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 4: Warehouse & Storage -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">04</span>
+                    <div class="icon-badge-tilt">
+                        <!-- Server / Storage Box SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                            <polyline points="21 8 21 21 3 21 3 8"></polyline>
+                            <rect x="1" y="3" width="22" height="5"></rect>
+                            <line x1="10" y1="12" x2="14" y2="12"></line>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Warehouse & Storage</h3>
+                    <p class="service-text">Climate-controlled warehousing & storage solutions across UAE.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 5: House & Office Shifting -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">05</span>
+                    <div class="icon-badge-tilt">
+                        <!-- Shifting / Sync SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <polyline points="23 4 23 10 17 10"></polyline>
+                            <polyline points="1 20 1 14 7 14"></polyline>
+                            <path d="M3.51 9a9 9 0 0 1 14.85-3.36L23 10M1 14l4.64 4.36A9 9 0 0 0 20.49 15"></path>
+                        </svg>
+                    </div>
+                    <h3 class="service-name">House & Office Shifting</h3>
+                    <p class="service-text">Full-service shifting for residential and commercial spaces UAE-wide.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Card 6: Dismantle & Assembly -->
+            <div class="col-xl-4 col-md-6">
+                <div class="luxury-glass-card">
+                    <span class="card-number">06</span>
+                    <div class="icon-badge-tilt">
+                        <!-- Tools / Pencil-Ruler Setup SVG -->
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
+                            <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 0-7.94-7.94L11 1.58M11.93 5.42L1.58 15.77a6 6 0 0 0 7.94 7.94L13.3 19.9" />
+                            <line x1="16" y1="16" x2="20" y2="20" />
+                        </svg>
+                    </div>
+                    <h3 class="service-name">Dismantle & Assembly</h3>
+                    <p class="service-text">Precise, careful, and damage-free furniture disassembly and reassembly.</p>
+                    <a href="#" class="read-more-btn">
+                        <span>Read More</span>
+                        <span class="arrow-box"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Premium Broad FAQ Section Start -->
+<section id="faq" class="broad-faq-section">
+    <div class="container">
+        <div class="row g-5">
+            
+            <!-- LEFT SIDE: Title Info -->
+            <div class="col-lg-5 col-12">
+                <div class="faq-sticky-side">
+                    <span class="faq-badge-tag"><span class="star-icon">*</span> Got Questions?</span>
+                    <h2 class="faq-heading-text">Frequently<br>asked <span class="serif-style">questions</span></h2>
+                    <p class="faq-para-text">Can't find an answer? Contact us directly — we're happy to help with any queries about your move.</p>
+                    
+                    <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="whatsapp-link-btn">
+                        Ask on WhatsApp
+                        <span class="arrow-svg-wrap">
+                            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+                        </span>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- RIGHT SIDE: Broad White Accordion Items -->
+            <div class="col-lg-7 col-12">
+                <div class="accordion accordion-flush broad-white-accordion" id="faqModernAccordion">
+                    
+                    <!-- FAQ Item 1 -->
+                    <div class="accordion-item faq-broad-card">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-1" aria-expanded="false">
+                                What services does Safe and Secure Movers provide?
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-1" class="accordion-collapse collapse" data-bs-parent="#faqModernAccordion">
+                            <div class="accordion-body">
+                                We offer comprehensive moving services including residential and commercial packing, local and international transportation, storage solutions, furniture assembly/disassembly, and relocation consulting.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 2 -->
+                    <div class="accordion-item faq-broad-card">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-2" aria-expanded="false">
+                                Is Safe and Secure Movers licensed and insured?
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-2" class="accordion-collapse collapse" data-bs-parent="#faqModernAccordion">
+                            <div class="accordion-body">
+                                Yes, we are fully licensed and insured. Our team adheres to industry standards ensuring the safety and security of your belongings throughout the entire moving process.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 3 -->
+                    <div class="accordion-item faq-broad-card">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-3" aria-expanded="false">
+                                How do I request a quote for my move?
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-3" class="accordion-collapse collapse" data-bs-parent="#faqModernAccordion">
+                            <div class="accordion-body">
+                                Fill out our online quote form on this page, or contact our customer service team via WhatsApp. Provide move details and we'll give you a personalized, transparent quote.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 4 -->
+                    <div class="accordion-item faq-broad-card">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-4" aria-expanded="false">
+                                What factors affect the cost of a move?
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-4" class="accordion-collapse collapse" data-bs-parent="#faqModernAccordion">
+                            <div class="accordion-body">
+                                The cost is influenced by distance, volume of items, packing services required, and any special handling needs like fragile items, storage, or dismantling of heavy furniture.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- FAQ Item 5 -->
+                    <div class="accordion-item faq-broad-card">
+                        <h2 class="accordion-header">
+                            <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#faq-collapse-5" aria-expanded="false">
+                                Can you assist with international relocations?
+                            </button>
+                        </h2>
+                        <div id="faq-collapse-5" class="accordion-collapse collapse" data-bs-parent="#faqModernAccordion">
+                            <div class="accordion-body">
+                                Absolutely! We specialize in international moves and can assist with logistics, documentation, customs clearance, and transportation to or from the UAE.
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            
+        </div>
+    </div>
+</section>
+<!-- Premium Broad FAQ Section End -->
+ <section class="luxury-marquee-wrapper">
+    <div class="marquee-container">
+        
+        <div class="marquee-track">
+            <div class="marquee-item"><span class="stat-highlight">15+</span> Years Fleet Experience</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">10k+</span> Successful Moves</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">100%</span> Safe & Secure Guarantee</div>
+            <div class="marquee-item-dot">•</div>
+            
+            <div class="marquee-item"><span class="stat-highlight">15+</span> Years Fleet Experience</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">10k+</span> Successful Moves</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">100%</span> Safe & Secure Guarantee</div>
+            <div class="marquee-item-dot">•</div>
+
+            <div class="marquee-item"><span class="stat-highlight">15+</span> Years Fleet Experience</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">10k+</span> Successful Moves</div>
+            <div class="marquee-item-dot">•</div>
+            <div class="marquee-item"><span class="stat-highlight">100%</span> Safe & Secure Guarantee</div>
+            <div class="marquee-item-dot">•</div>
+        </div>
+
+    </div>
+</section>
+<!-- Premium Dark Estimate/Quote Section Start -->
+<section id="quote" class="premium-quote-section position-relative overflow-hidden">
+    <!-- Deep Gradient Black/Maroon Layer over the background image -->
+    <div class="quote-bg-overlay"></div>
+    
+    <div class="container position-relative z-index-5">
+        <div class="row g-5 align-items-start">
+            
+            <!-- LEFT COLUMN: Contact & Badges Info -->
+            <div class="col-lg-5 col-12">
+                <div class="quote-info-panel">
+                    <span class="quote-sub-badge"><span class="star-accent">*</span> Free Estimate</span>
+                    <h2 class="quote-main-title">Get your free<br>moving <span class="serif-italic">quote</span></h2>
+                    <p class="quote-desc-text">Fill in your details and we'll get back to you within 24 hours with a transparent, competitive price.</p>
+                    
+                    <!-- Direct Connection Links -->
+                    <div class="quote-contact-stack">
+                        <!-- Phone / WhatsApp Row -->
+                        <div class="contact-item-row d-flex align-items-center">
+                            <div class="contact-icon-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3333" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <div class="contact-details-box">
+                                <div class="contact-main-value">+971 52 440 2005</div>
+                                <div class="contact-label-tag">Call or WhatsApp</div>
+                            </div>
+                        </div>
+
+                        <!-- Email Row -->
+                        <div class="contact-item-row d-flex align-items-center">
+                            <div class="contact-icon-box">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3333" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <div class="contact-details-box">
+                                <div class="contact-main-value">info@safeandsecuremovers.com</div>
+                                <div class="contact-label-tag">Email us anytime</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- RIGHT COLUMN: Premium Broad Form Structure -->
+            <div class="col-lg-7 col-12">
+                <div class="quote-form-card">
+                    <form action="#" method="POST" id="quoteRequestForm">
+                        
+                        <!-- Row 1: General Details -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Full Name</label>
+                                <input type="text" placeholder="Your name" class="premium-form-input" required>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Phone Number</label>
+                                <input type="tel" placeholder="+971 XX XXX XXXX" class="premium-form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 2: Mail & Calendar -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Email Address</label>
+                                <input type="email" placeholder="your@email.com" class="premium-form-input" required>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Moving Date</label>
+                                <input type="date" class="premium-form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 3: Locations Handling -->
+                        <div class="row g-4 mb-4">
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Moving From</label>
+                                <input type="text" placeholder="Current location" class="premium-form-input" required>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Moving To</label>
+                                <input type="text" placeholder="Destination" class="premium-form-input" required>
+                            </div>
+                        </div>
+
+                        <!-- Row 4: Specifications Select Filters -->
+                        <div class="row g-4 mb-5">
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Type of Move</label>
+                                <select class="premium-form-input form-select-custom">
+                                    <option value="" disabled selected>Select type</option>
+                                    <option>Residential</option>
+                                    <option>Commercial</option>
+                                    <option>Studio / Office</option>
+                                    <option>International</option>
+                                </select>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <label class="input-form-label">Long Distance?</label>
+                                <select class="premium-form-input form-select-custom">
+                                    <option value="" disabled selected>Select</option>
+                                    <option>Yes</option>
+                                    <option>No</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <!-- Action Submit Triggers -->
+                        <button type="submit" id="submitBtn" class="premium-submit-btn">
+                            Request Your Free Quote
+                            <span class="btn-arrow">→</span>
+                        </button>
+
+                    </form>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+<!-- Premium Dark Estimate/Quote Section End -->
+</main>
+<footer class="premium-footer position-relative border-top border-secondary-subtle overflow-hidden">
+    <div class="footer-bg-overlay"></div>
+    
+    <div class="container position-relative z-index-5 pt-5 mt-4">
+        <div class="row justify-content-center text-center mb-5">
+            <div class="col-lg-8 col-12">
+                <h2 class="footer-cta-title mb-4">Ready to move<br><span class="serif-italic-red">stress-free?</span></h2>
+                
+                <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="footer-cta-btn btn btn-outline-light rounded-pill px-4 py-3 tracking-wider">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="me-2 btn-icon-svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    +971 52 440 2005
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <div class="container position-relative z-index-5 pb-5">
+        <div class="row g-4 justify-content-between mb-5 text-center text-sm-start">
+            
+            <div class="col-lg-3 col-sm-6 col-12 d-flex flex-column align-items-center align-items-sm-start gap-3">
+                <div class="footer-logo-box">
+                    <span class="logo-placeholder-text">[ LARGE LOGO ]</span>
+                </div>
+                <div>
+                    <div class="footer-brand-title">Safe &amp; Secure</div>
+                    <div class="footer-brand-sub">Movers Dubai</div>
+                </div>
+                <p class="footer-brand-desc">Dedicated to making your move seamless and secure across UAE. Trusted since 2014.</p>
+                
+                <div class="d-flex gap-2 pt-2">
+                    <a href="https://www.facebook.com/people/Safe-Secure-Movers/61564820282959/" target="_blank" class="footer-social-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+                    </a>
+                    <a href="#" class="footer-social-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                    </a>
+                    <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="footer-social-icon">
+                        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
+                    </a>
+                </div>
+            </div>
+
+            <div class="col-lg-2 col-sm-6 col-12">
+                <div class="footer-grid-heading">Services</div>
+                <ul class="footer-links-list list-unstyled m-0 p-0">
+                    <li><a href="#services">Transportation Service</a></li>
+                    <li><a href="#services">Household Moving</a></li>
+                    <li><a href="#services">Commercial Movers</a></li>
+                    <li><a href="#services">Warehouse &amp; Storage</a></li>
+                    <li><a href="#services">House &amp; Office Shifting</a></li>
+                    <li><a href="#services">Dismantling Service</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-2 col-sm-6 col-12 mt-4 mt-sm-0">
+                <div class="footer-grid-heading">Quick Links</div>
+                <ul class="footer-links-list list-unstyled m-0 p-0">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#about">About Us</a></li>
+                    <li><a href="#services">Services</a></li>
+                    <li><a href="#faq">FAQ</a></li>
+                    <li><a href="#quote">Get Quote</a></li>
+                </ul>
+            </div>
+
+            <div class="col-lg-3 col-sm-6 col-12 d-flex flex-column justify-content-between mt-4 mt-lg-0 align-items-center align-items-sm-start">
+                <div class="w-100">
+                    <div class="footer-grid-heading">Contact</div>
+                    <ul class="footer-contact-details list-unstyled m-0 p-0 d-flex flex-column gap-3">
+                        <li class="d-flex align-items-center justify-content-center justify-content-sm-start gap-3">
+                            <div class="footer-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+                            </div>
+                            <span class="contact-text-node">United Arab Emirates</span>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center justify-content-sm-start gap-3">
+                            <div class="footer-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+                            </div>
+                            <span class="contact-text-node">+971 52 440 2005</span>
+                        </li>
+                        <li class="d-flex align-items-center justify-content-center justify-content-sm-start gap-3">
+                            <div class="footer-icon-box">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </div>
+                            <span class="contact-text-node">info@safeandsecuremovers.com</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="footer-whatsapp-action btn btn-light rounded-pill w-100 mt-4 d-inline-flex align-items-center justify-content-center gap-2">
+                    Ask on WhatsApp
+                    <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="arrow-icon"><path d="M5 12h14M12 5l7 7-7 7"></path></svg>
+                </a>
+            </div>
+
+        </div>
+
+        <div class="row pt-4 border-top border-secondary-subtle align-items-center justify-content-between text-center flex-col flex-sm-row gap-3">
+            <div class="col-sm-auto col-12">
+                <p class="copyright-text m-0">© 2026 <a href="#">safeandsecuremovers.com</a> — All rights reserved</p>
+            </div>
+            <div class="col-sm-auto col-12 d-flex align-items-center justify-content-center gap-2 live-indicator-box">
+                <span class="position-relative d-flex h-2 w-2 mb-0">
+                    <span class="animate-ping position-absolute inline-flex h-full w-full rounded-circle bg-success opacity-75"></span>
+                    <span class="position-relative inline-flex rounded-circle h-2 w-2 bg-success"></span>
+                </span>
+                <span class="indicator-text">Available for moves today</span>
+            </div>
+        </div>
+    </div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
