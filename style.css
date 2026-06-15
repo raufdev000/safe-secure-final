@@ -752,7 +752,7 @@ background: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.20) 
     margin-bottom: 8px;
 }
 .footer-logo-box img {
-    height: clamp(55px, 8vw, 90px);
+    height: clamp(90px, 8vw, 110px);
     width: auto;
     object-fit: contain;
     display: block;
@@ -922,7 +922,7 @@ background: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.20) 
     .live-indicator-box { justify-content: center !important; }
     .contact-text-node { font-size: 0.85rem; }
     .footer-icon-box { width: 18px !important; height: 18px !important; }
-    .footer-logo-box { max-width: 150px; height: 65px; } /* Slightly scales logo container on mobile views */
+    .footer-logo-box { max-width: 150px; height: 85px; } /* Slightly scales logo container on mobile views */
 }
 /* --- RESPONSIVE CONFIG ENGINE --- */
 @media (max-width: 991px) {
