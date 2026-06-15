@@ -8,7 +8,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css">
-  <style>:root {
+<style>
+    :root {
   --red: #c0000c;
   --black: #000000;
   --dark: #0e0e0e;
@@ -60,23 +61,64 @@ body {
 }
 .nav-hamburger span::before { top: -7px; }
 .nav-hamburger span::after  { top:  7px; }
+
+.desktop-nav {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 2rem;
+  flex: 1;
+  justify-content: center;
+}
+.desktop-nav-link {
+  font-family: 'Inter', sans-serif;
+  font-size: 0.99rem;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(240,240,240,0.75);
+  text-decoration: none;
+  position: relative;
+  transition: color 0.25s;
+}
+.desktop-nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--red);
+  transition: width 0.3s;
+}
+.desktop-nav-link:hover,
+.desktop-nav-link.active { color: #fff; }
+.desktop-nav-link:hover::after,
+.desktop-nav-link.active::after { width: 100%; }
 .nav-logo {
   margin-left: auto;
   display: flex;
   align-items: center;
-  background: rgba(255,255,255,0.97);
+  /* White background ko transparent kar diya taake logo direct image ke upar aaye */
+  background: transparent !important; 
   padding: 0 1rem;
-  margin-right: -2px;
+  margin-right: 0; /* Extra margins khatam */
   height: 100%;
   width: auto;
   min-width: unset;
 }
+
 .nav-logo-img img {
   height: clamp(44px, 6vw, 62px);
   width: auto;
   object-fit: contain;
   display: block;
-}/* ══════════ OFFCANVAS ══════════ */
+  /* Logo transparent hone ke baad agar dark image ke upar dundhla lage, 
+     toh brightness badhane ke liye aap niche wala filter use kar sakte hain (Optional) */
+  /* filter: drop-shadow(0px 2px 8px rgba(0,0,0,0.5)); */
+}
+
+/* ══════════ OFFCANVAS ══════════ */
 .offcanvas {
   background: #0d0d0d !important;
   border-right: 1px solid rgba(192,0,12,0.25) !important;
@@ -122,7 +164,7 @@ body {
   background: linear-gradient(120deg, #000 0%, #111 30%, #1c1c1c 60%, #252525 100%);
   background-image: url('https://kitpro.site/limoluxe/wp-content/uploads/sites/426/2025/07/Image2.jpg');
   background-size: cover;
-  background-position: center right;
+  background-position: center center;
   opacity: 75%;
 }
 .hero-bg::after {
@@ -288,26 +330,7 @@ body {
   line-height: 1.5;
 }
 
-/* ══════════ RESPONSIVE ══════════ */
-@media (max-width: 768px) {
-  .hero { padding-bottom: 0; min-height: auto; }
-  .hero-content { padding-top: 90px; padding-bottom: 40px; }
-  .hero-title { line-height: 0.92; }
-  .badge-desc { font-size: 0.8rem; }
-  .hero-features {
-    grid-template-columns: repeat(2, 1fr);
-    position: relative;
-  }
-  .feature-item:nth-child(2) { border-right: none; }
-  .nav-logo-text-wrap { display: none; }
-}
-@media (max-width: 480px) {
-  .hero-features { grid-template-columns: 1fr; }
-  .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-logo-img img { height: 44px; }
-}
-    
-    /* Social links fix */
+/* ══════════ ABOUT SECTION SOCIAL ══════════ */
 .social-badge-strip {
   display: flex;
   flex-direction: column;
@@ -317,7 +340,6 @@ body {
   transform: translateY(-50%);
   z-index: 10;
 }
-
 .social-tile {
   width: 44px;
   height: 44px;
@@ -328,48 +350,11 @@ body {
   font-size: 15px;
   text-decoration: none;
 }
-
 .bg-red { background: #c0000c; }
 .bg-grey { background: #444; }
 .bg-dark-grey { background: #222; }
 
-/* Mobile fix */
-@media (max-width: 991px) {
-  .right-image-side {
-    min-height: 350px;
-    position: relative;
-  }
-
-  .main-image-wrapper {
-    height: 350px;
-    overflow: hidden;
-  }
-
-  .main-image-wrapper .actual-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: top center;
-  }
-
-  .social-badge-strip {
-    flex-direction: row;
-    top: auto;
-    bottom: 12px;
-    right: 0;
-    transform: none;
-  }
-
-  .content-container {
-    padding: 2rem 1.2rem;
-  }
-
-  .feature-grid .mini-car-box img {
-    height: 140px;
-    object-fit: cover;
-    width: 100%;
-  }
-}
+/* ══════════ RESPONSIVE ══════════ */
 @media (max-width: 991px) {
   .right-image-side {
     min-height: 320px;
@@ -377,35 +362,25 @@ body {
     margin-top: 0;
     z-index: 1;
   }
-
   .main-image-wrapper {
     height: 320px;
     overflow: hidden;
     position: relative;
     z-index: 1;
   }
-
   .main-image-wrapper .actual-img {
     width: 100%;
     height: 100%;
     object-fit: cover;
     object-position: center bottom;
   }
-
-  .premium-about .row {
-    flex-direction: column-reverse;
-  }
-
+  .premium-about .row { flex-direction: column-reverse; }
   .left-content-side {
     position: relative;
     z-index: 2;
     background: #0a0a0a;
   }
-
-  .white-cut-backdrop {
-    display: none;
-  }
-
+  .white-cut-backdrop { display: none; }
   .social-badge-strip {
     flex-direction: row;
     position: absolute;
@@ -415,27 +390,58 @@ body {
     transform: none;
     z-index: 10;
   }
+  .content-container { padding: 2rem 1.2rem; }
+  .feature-grid .mini-car-box img {
+    height: 140px;
+    object-fit: cover;
+    width: 100%;
+  }
 }
-  </style>
+
+@media (max-width: 768px) {
+  .hero { padding-bottom: 0; min-height: auto; }
+  .hero-content { padding-top: 90px; padding-bottom: 40px; }
+  .hero-title { line-height: 0.92; }
+  .badge-desc { font-size: 0.8rem; }
+  .hero-features {
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+  }
+  .feature-item:nth-child(2) { border-right: none; }
+}
+
+@media (max-width: 480px) {
+  .hero-features { grid-template-columns: 1fr; }
+  .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  .nav-logo-img img { height: 44px; }
+}
+</style>
 </head>
 <body>
-
 <!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
 <nav class="site-nav">
-  <button class="nav-hamburger"
+
+  <!-- Hamburger — sirf mobile/tablet -->
+  <button class="nav-hamburger d-lg-none"
           data-bs-toggle="offcanvas"
           data-bs-target="#navOffcanvas"
           aria-label="Open menu">
     <span></span>
   </button>
 
+  <!-- Desktop links — sirf large screen -->
+  <div class="desktop-nav d-none d-lg-flex">
+    <a class="desktop-nav-link active" href="#">Home</a>
+    <a class="desktop-nav-link" href="#">About Us</a>
+    <a class="desktop-nav-link" href="#">Services</a>
+    <a class="desktop-nav-link" href="#">Our Process</a>
+    <a class="desktop-nav-link" href="#">Testimonials</a>
+    <a class="desktop-nav-link" href="#">Contact Us</a>
+  </div>
+
   <div class="nav-logo">
     <div class="nav-logo-img">
       <img src="ChatGPT Image Jun 14, 2026, 08_21_30 PM_Nero_AI_Background_Remover_transparent.png" alt="Logo">
-    </div>
-    <div class="nav-logo-text-wrap">
-      <div class="nav-logo-title">Safe <span>&</span> Secure</div>
-      <div class="nav-logo-sub">Movers Dubai</div>
     </div>
   </div>
 </nav>
