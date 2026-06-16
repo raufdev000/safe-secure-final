@@ -1,5 +1,11 @@
-
-
+html, body {
+   
+    overflow-x: hidden;
+}
+body {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
 /* Overall Section Container */
 .premium-about {
     background-color: #000000;
@@ -907,6 +913,158 @@ background: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.20) 
         opacity: 0;
     }
 }
+
+/* ══════════ ULTRA PREMIUM TESTIMONIALS SECTION ══════════ */
+.premium-testimonials {
+    background-color: #050505;
+    overflow: hidden;
+}
+
+/* Subtle Glowing Background Accent Points */
+.premium-testimonials::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 400px;
+    height: 400px;
+    background: radial-gradient(circle, rgba(192, 0, 12, 0.04) 0%, rgba(0,0,0,0) 70%);
+    pointer-events: none;
+}
+
+/* Typography Header Matrix */
+.testimonial-badge-sub {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #666666;
+    letter-spacing: 2px;
+}
+.testimonial-main-heading {
+    font-family: 'Poppins', sans-serif;
+    color: var(--white);
+    font-size: clamp(3rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.15;
+    letter-spacing: -1px;
+}
+.testimonial-main-heading .serif-italic-red {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    color: var(--red);
+    font-weight: 400;
+}
+.testimonial-header-desc {
+    color: rgba(240, 240, 240, 0.5);
+    font-size: 0.99rem;
+    line-height: 1.6;
+    max-width: 440px;
+    display: inline-block;
+}
+
+/* Luxury Card Core Structure */
+.testimonial-premium-card {
+    background: rgba(14, 14, 14, 0.6);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    padding: 2.2rem;
+    backdrop-filter: blur(8px);
+    transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+    position: relative;
+}
+
+/* Luxury Glow Hover Effect */
+.testimonial-premium-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(8, 8, 8, 0.25);
+background: linear-gradient(135deg, #580404 0%, #aa0404 100%);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.6), 0 0 20px rgba(192, 0, 12, 0.05);
+}
+
+/* Rating Matrix elements */
+.testimonial-stars-rating span {
+    color: var(--red);
+    font-size: 1.1rem;
+}
+
+/* Verified Signal Badges */
+.testimonial-verified-badge {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.80rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    color: #00cc66; /* Elegant soft emerald green */
+    letter-spacing: 0.08em;
+    background: rgba(0, 204, 102, 0.06);
+    padding: 4px 10px;
+    border: 1px solid rgba(0, 204, 102, 0.15);
+    display: inline-flex;
+    align-items: center;
+}
+
+/* Quote Internal Content Elements */
+.testimonial-quote-text {
+    font-family: 'Inter', sans-serif;
+    color: rgba(240, 240, 240, 0.85);
+    font-size: 0.99rem;
+    line-height: 1.7;
+    font-weight: 300;
+    margin-bottom: 2rem;
+    letter-spacing: 0.01em;
+}
+
+/* Author Profiler Frameworks */
+.testimonial-author-box {
+    border-color: rgba(255, 255, 255, 0.06) !important;
+}
+.author-initials {
+    width: 44px;
+    height: 44px;
+    background: rgba(192, 0, 12, 0.08);
+    border: 1px solid rgba(192, 0, 12, 0.2);
+    color: var(--red);
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    letter-spacing: 1px;
+    flex-shrink: 0;
+}
+.author-name {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.92rem;
+    font-weight: 600;
+    color: var(--white);
+    letter-spacing: 0.2px;
+}.author-location {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    color: #666666;
+    margin-top: 1px;
+    transition: color 0.3s ease; /* Isse color smooth change hoga */
+}
+
+/* NEW: Card par hover karte hi office shifting / location waala text white ho jayega */
+.testimonial-premium-card:hover .author-location {
+    color: rgba(255, 255, 255, 0.9) !important;
+}
+
+/* Utility layout tracker layering link */
+.z-index-2 {
+    z-index: 2;
+}
+
+/* --- RESPONSIVE ADJUSTMENTS --- */
+@media (max-width: 767px) {
+    .testimonial-premium-card {
+        padding: 1.8rem;
+    }
+    .testimonial-main-heading {
+        margin-bottom: 10px;
+    }
+}
 /* --- RESPONSIVE MODIFIERS MATRIX --- */
 @media (max-width: 991px) {
     .contact-text-node { white-space: normal !important; }
@@ -1003,4 +1161,339 @@ background: linear-gradient(135deg, rgba(0, 0, 0, 0.30) 0%, rgba(0, 0, 0, 0.20) 
 @media (max-width: 575px) {
     .section-title { font-size: 2.2rem; }
     .stat-num { font-size: 2.5rem; }
+}
+.fade-reveal {
+    opacity: 0;
+    transform: scale(0.96);
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.22,1,.36,1);
+}
+
+.fade-reveal.show {
+    opacity: 1;
+    transform: scale(1);
+}
+.fade-fast {
+    opacity: 0;
+    filter: blur(8px);
+    transition:
+        opacity 0.45s ease-out,
+        filter 0.45s ease-out;
+}
+
+.fade-fast.show {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* Slow Cinematic Fade */
+.fade-slow {
+    opacity: 0;
+    filter: blur(14px);
+    transition:
+        opacity 1.8s cubic-bezier(.22,1,.36,1),
+        filter 1.8s cubic-bezier(.22,1,.36,1);
+}
+
+.fade-slow.show {
+    opacity: 1;
+    filter: blur(0);
+}
+
+/* =========================
+   FAST 3D POP
+========================= */
+
+.pop-fast {
+    transform:
+        perspective(1000px)
+        rotateX(12deg)
+        scale(0.75);
+
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+.pop-fast.show {
+    animation: popFast .45s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes popFast {
+    0% {
+        transform:
+            perspective(1000px)
+            rotateX(12deg)
+            scale(0.75);
+    }
+
+    75% {
+        transform:
+            perspective(1000px)
+            rotateX(-1deg)
+            scale(1.04);
+    }
+
+    100% {
+        transform:
+            perspective(1000px)
+            rotateX(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   MEDIUM 3D POP
+========================= */
+
+.pop-medium {
+    transform:
+        perspective(1200px)
+        rotateX(16deg)
+        scale(0.80);
+
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+.pop-medium.show {
+    animation: popMedium .8s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes popMedium {
+    0% {
+        transform:
+            perspective(1200px)
+            rotateX(16deg)
+            scale(0.80);
+    }
+
+    75% {
+        transform:
+            perspective(1200px)
+            rotateX(-2deg)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            perspective(1200px)
+            rotateX(0)
+            scale(1);
+    }
+}
+
+
+/* =========================
+   SLOW PREMIUM 3D POP
+========================= */
+
+.pop-slow {
+    transform:
+        perspective(1500px)
+        rotateX(22deg)
+        scale(0.85);
+
+    transform-origin: center center;
+    backface-visibility: hidden;
+}
+
+.pop-slow.show {
+    animation: popSlow 1.3s cubic-bezier(.22,1,.36,1) forwards;
+}
+
+@keyframes popSlow {
+    0% {
+        transform:
+            perspective(1500px)
+            rotateX(22deg)
+            scale(0.85);
+    }
+
+    75% {
+        transform:
+            perspective(1500px)
+            rotateX(-2deg)
+            scale(1.05);
+    }
+
+    100% {
+        transform:
+            perspective(1500px)
+            rotateX(0)
+            scale(1);
+    }
+}
+/* Slide Left - Fast */
+.slide-left-fast {
+    transform: translateX(-80px);
+    opacity: 0;
+
+    transition:
+        transform 0.45s cubic-bezier(.22,1,.36,1),
+        opacity 0.45s ease-out;
+
+    will-change: transform, opacity;
+}
+
+.slide-left-fast.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+/* Slide Left - Medium */
+.slide-left-medium {
+    transform: translateX(-120px);
+    opacity: 0;
+
+    transition:
+        transform 0.8s cubic-bezier(.22,1,.36,1),
+        opacity 0.8s cubic-bezier(.22,1,.36,1);
+
+    will-change: transform, opacity;
+}
+
+.slide-left-medium.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+/* Slide Left - Slow Premium */
+.slide-left-slow {
+    transform: translateX(-160px);
+    opacity: 0;
+
+    transition:
+        transform 1.3s cubic-bezier(.22,1,.36,1),
+        opacity 1.3s cubic-bezier(.22,1,.36,1);
+
+    will-change: transform, opacity;
+}
+
+.slide-left-slow.show {
+    transform: translateX(0);
+    opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ══════════ PREMIUM QUOTE FORM ══════════ */
+.quote-form-card {
+    background: rgba(14, 14, 14, 0.75);
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    padding: 2.5rem;
+    backdrop-filter: blur(10px);
+}
+
+/* Broad Input Placeholders & Styling */
+.premium-form-input {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    color: var(--white);
+    padding: 0.95rem 1.2rem; /* Padding badha kar inputs aur placeholders ko broad kiya */
+    font-size: 0.92rem;
+    font-family: 'Inter', sans-serif;
+    letter-spacing: 0.03em;
+    transition: all 0.3s ease;
+    outline: none;
+    border-radius: 0; /* Boxy clean theme */
+}
+
+/* Custom Select Dropdown Reset */
+.form-select-custom {
+    appearance: none;
+    background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%23f0f0f0'%3e%3cpath fill-rule='evenodd' d='M1.646 4.646a.5.5 0 0 1 .708 0L8 10.293l5.646-5.647a.5.5 0 0 1 .708.708l-6 6a.5.5 0 0 1-.708 0l-6-6a.5.5 0 0 1 0-.708z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 1.2rem center;
+    background-size: 12px;
+}
+
+/* Select options behavior fix for dark mode */
+.form-select-custom option {
+    background-color: var(--dark);
+    color: var(--white);
+}
+
+/* Label Typography */
+.input-form-label {
+    font-family: 'Inter', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    color: rgba(240, 240, 240, 0.6);
+    margin-bottom: 0.6rem;
+    display: block;
+}
+
+/* Focus State Effect */
+.premium-form-input:focus {
+    border-color: var(--red);
+    background: rgba(255, 255, 255, 0.05);
+    box-shadow: 0 0 12px rgba(192, 0, 12, 0.15);
+}
+
+/* Placeholders text customization (Broad & Readable) */
+.premium-form-input::placeholder {
+    color: rgba(240, 240, 240, 0.35);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em; /* Broad text spacing */
+}
+
+/* ══════════ ACTION BUTTON STYLING ══════════ */
+.premium-submit-btn {
+    width: 100%;
+    background: var(--red);
+    color: #ffffff;
+    border: 1px solid var(--red);
+    padding: 1rem 2rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+}
+
+.btn-arrow {
+    font-size: 1.1rem;
+    transition: transform 0.3s ease;
+}
+
+/* Button Hover State */
+.premium-submit-btn:hover {
+    background: #a0000a;
+    border-color: #a0000a;
+    box-shadow: 0 4px 20px rgba(192, 0, 12, 0.4); /* Premium Glow Effect */
+}
+
+.premium-submit-btn:hover .btn-arrow {
+    transform: translateX(5px); /* Smooth micro-interaction */
 }
