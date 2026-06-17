@@ -4,7 +4,7 @@ html, body {
 }
 body {
     -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    -moz-osx-font-smoothing: grayscale;        
 }
 /* Overall Section Container */
 .premium-about {
