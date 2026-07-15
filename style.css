@@ -407,480 +407,11 @@ body {
   }
 }
 
-@media (max-width: 768px) {
-  .hero {
-    padding-bottom: 0;
-    min-height: auto;
-  }
-  .hero-bg {
-    background-size: contain;
-    background-position: center top;
-    background-color: #000;
-  }
-  .hero-content {
-    padding-top: 320px;
-    padding-bottom: 40px;
-  }
-  .hero-title  { font-size: clamp(2rem, 10vw, 3rem); line-height: 1; margin-bottom: 0; }
-  .hero-line2  { font-size: clamp(1.9rem, 9vw, 2.8rem); margin-bottom: 0.6rem; }
-  .hero-divider { margin: 0.5rem auto 0.8rem auto; }
-  .badge-desc  { font-size: 0.82rem; line-height: 1.5; }
-  .hero-desc-wrap { margin-bottom: 1rem; max-width: 92%; }
-  .hero-btns   { gap: 0.6rem; }
-  .btn-hero-primary,
-  .btn-hero-outline { padding: 0.65rem 1.2rem; font-size: 0.75rem; }
-  .hero-features {
-    grid-template-columns: repeat(2, 1fr);
-    position: relative;
-  }
-  .feature-item:nth-child(2) { border-right: none; }
-}
-
 @media (max-width: 480px) {
-  .hero-content { padding-top: 240px; }
-  .hero-features { grid-template-columns: 1fr; }
-  .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-logo-img img { height: 80px; }
-}
-}
-
-  :root {
-  --red: #c0000c;
-  --black: #000000;
-  --dark: #0e0e0e;
-  --white: #f0f0f0;
-}
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
-}
-
-/* ══════════ NAVBAR ══════════ */
-.site-nav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: stretch;
-  height: 92px;
-}
-
-.nav-hamburger {
-  width: 80px;
-  background: var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  border: none;
-  outline: none;
-  align-self: stretch;
-}
-.nav-hamburger span,
-.nav-hamburger span::before,
-.nav-hamburger span::after {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #fff;
-  position: relative;
-  transition: all 0.3s;
-}
-.nav-hamburger span::before,
-.nav-hamburger span::after {
-  content: '';
-  position: absolute;
-}
-.nav-hamburger span::before { top: -7px; }
-.nav-hamburger span::after  { top:  7px; }
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
-  flex: 1;
-  justify-content: center;
-}
-.desktop-nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.90rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(240,240,240,0.75);
-  text-decoration: none;
-  position: relative;
-  transition: color 0.25s;
-}
-.desktop-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--red);
-  transition: width 0.3s;
-}
-.desktop-nav-link:hover,
-.desktop-nav-link.active { color: #fff; }
-.desktop-nav-link:hover::after,
-.desktop-nav-link.active::after { width: 100%; }
-.nav-logo {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  /* White background ko transparent kar diya taake logo direct image ke upar aaye */
-  background: transparent !important; 
-  padding: 0 1rem;
-  margin-right: 0; /* Extra margins khatam */
-  height: 100%;
-  width: auto;
-  min-width: unset;
-}
-
-.nav-logo-img img {
-  height: clamp(99px, 6vw, 120px);
-  width: auto;
-  object-fit: contain;
-  display: block;
-  /* Logo transparent hone ke baad agar dark image ke upar dundhla lage, 
-      toh brightness badhane ke liye aap niche wala filter use kar sakte hain (Optional) */
-  /* filter: drop-shadow(0px 2px 8px rgba(0,0,0,0.5)); */
-}
-
-/* ══════════ OFFCANVAS ══════════ */
-.offcanvas {
-  background: #0d0d0d !important;
-  border-right: 1px solid rgba(192,0,12,0.25) !important;
-  width: 280px !important;
-}
-.offcanvas-header { border-bottom: 1px solid rgba(192,0,12,0.15); }
-.offcanvas-title {
-  font-family: 'Cinzel', serif;
-  color: var(--white);
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
-}
-.btn-close { filter: invert(1) sepia(1) saturate(5) hue-rotate(300deg); }
-.offcanvas .nav-link {
-  color: rgba(240,240,240,0.7) !important;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.85rem 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: color 0.2s, padding-left 0.25s;
-}
-.offcanvas .nav-link:hover {
-  color: var(--red) !important;
-  padding-left: 1.8rem;
-}
-
-/* ══════════ HERO ══════════ */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--black);
-  padding-bottom: 120px;
-}
-
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background-color: #0a0a0a;
-  background-image: url('hero.webp');
-  background-size: cover;
-  background-position: center center;
-  background-repeat: no-repeat;
-  opacity: 1;
-}
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(0,0,0,0.75) 0%,
-    rgba(0,0,0,0.45) 45%,
-    rgba(0,0,0,0.15) 100%
-  );
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding-top: 130px;
-  padding-bottom: 60px;
-  width: 100%;
-}
-
-/* ══════════ HERO TEXT ══════════ */
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.6rem, 8vw, 6.5rem);
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.015em;
-  margin-bottom: 0.1rem;
-  text-align: center;
-}
-.hero-title .accent-g {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 400;
-}
-
-.hero-line2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(2.4rem, 7vw, 5.8rem);
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  margin-bottom: 0.9rem;
-  text-align: center;
-}
-.hero-line2 .script-in {
-  font-family: 'Dancing Script', cursive;
-  color: var(--red);
-  font-size: 0.9em;
-  font-weight: 600;
-  margin-right: 0.08em;
-  letter-spacing: 0;
-}
-
-/* Red divider between headline and description */
-.hero-divider {
-  width: 60px;
-  height: 2px;
-  background: var(--red);
-  margin: 0.6rem auto 1rem auto;
-  border: 0;
-}
-
-.hero-desc-wrap {
-  border: none;
-  padding: 0.2rem 0 0.4rem 0;
-  margin: 0 auto 1.4rem auto;
-  max-width: 620px;
-}
-.badge-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.95rem;
-  color: rgba(240,240,240,0.78);
-  line-height: 1.55;
-  text-align: center;
-  margin: 0;
-}
-
-/* ══════════ BUTTONS ══════════ */
-.hero-btns {
-  display: flex;
-  gap: 0.8rem;
-  flex-wrap: wrap;
-  justify-content: center;
-  margin-top: 0.4rem;
-}
-.btn-hero-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--red);
-  color: #fff;
-  border: 1px solid var(--red);
-  padding: 0.75rem 1.8rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.25s, color 0.25s;
-}
-.btn-hero-primary:hover { background: #a0000a; border-color: #a0000a; color: #fff; }
-
-.btn-hero-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(240,240,240,0.55);
-  padding: 0.75rem 1.8rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.25s, border-color 0.25s;
-}
-.btn-hero-outline:hover { background: rgba(255,255,255,0.08); border-color: #fff; color: #fff; }
-
-/* ══════════ FEATURE BOXES ══════════ */
-.hero-features {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: rgba(10,10,10,0.92);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  z-index: 3;
-}
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 1.4rem 1.6rem;
-  border-right: 1px solid rgba(255,255,255,0.06);
-}
-.feature-item:last-child { border-right: none; }
-.feature-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(192,0,12,0.12);
-  border: 1px solid rgba(192,0,12,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.feature-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--red);
-}
-.feature-title {
-  font-size: 0.99rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-.feature-sub {
-  font-size: 0.90rem;
-  color: rgba(240,240,240,0.5);
-  line-height: 1.5;
-}
-
-/* ══════════ ABOUT SECTION SOCIAL ══════════ */
-.social-badge-strip {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-.social-tile {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 15px;
-  text-decoration: none;
-}
-.bg-red { background: #c0000c; }
-.bg-grey { background: #444; }
-.bg-dark-grey { background: #222; }
-
-/* ══════════ RESPONSIVE ══════════ */
-@media (max-width: 991px) {
-  .right-image-side {
-    min-height: 320px;
-    position: relative;
-    margin-top: 0;
-    z-index: 1;
-  }
-  .main-image-wrapper {
-    height: 320px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-  }
-  .main-image-wrapper .actual-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-  }
-  .premium-about .row { flex-direction: column-reverse; }
-  .left-content-side {
-    position: relative;
-    z-index: 2;
-    background: #0a0a0a;
-  }
-  .white-cut-backdrop { display: none; }
-  .social-badge-strip {
-    flex-direction: row;
-    position: absolute;
-    bottom: 12px;
-    right: 0;
-    top: auto;
-    transform: none;
-    z-index: 10;
-  }
-  .content-container { padding: 2rem 1.2rem; }
-  .feature-grid .mini-car-box img {
-    height: 140px;
-    object-fit: cover;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero {
-    padding-bottom: 0;
-    min-height: auto;
-  }
-  .hero-bg {
-    background-size: contain;
-    background-position: center top;
-    background-color: #000;
-  }
-  .hero-content {
-    padding-top: 320px;
-    padding-bottom: 40px;
-  }
-  .hero-title  { font-size: clamp(2rem, 10vw, 3rem); line-height: 1; margin-bottom: 0; }
-  .hero-line2  { font-size: clamp(1.9rem, 9vw, 2.8rem); margin-bottom: 0.6rem; }
-  .hero-divider { margin: 0.5rem auto 0.8rem auto; }
-  .badge-desc  { font-size: 0.82rem; line-height: 1.5; }
-  .hero-desc-wrap { margin-bottom: 1rem; max-width: 92%; }
-  .hero-btns   { gap: 0.6rem; }
-  .btn-hero-primary,
-  .btn-hero-outline { padding: 0.65rem 1.2rem; font-size: 0.75rem; }
-  .hero-features {
-    grid-template-columns: repeat(2, 1fr);
-    position: relative;
-  }
-  .feature-item:nth-child(2) { border-right: none; }
-}
-
-@media (max-width: 480px) {
-  .hero-content { padding-top: 240px; }
-  .hero-features { grid-template-columns: 1fr; }
-  .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
   .nav-logo-img img { height: 80px; }
 }
 
-/* Overall Section Container */
+/* ══════════ ABOUT / OTHER SECTIONS ══════════ */
 .premium-about {
     background-color: #000000;
     position: relative;
@@ -2812,4 +2343,194 @@ background: linear-gradient(135deg, #580404 0%, #aa0404 100%);
 }
 @media (prefers-reduced-motion:reduce){
   .ftr__marquee-track,.ftr__dot::after{ animation:none; }
+}
+/* ═══════════════════════════════════════════════════════════════════
+   ✦ MOBILE HERO OVERRIDE (single, clean, conflict-free)
+   Desktop .hero (dark truck-image version above) is untouched.
+   Sirf ≤991.98px pe active — is baar sirf EK hi override hai,
+   purani do alag overrides (jo aapas me clash kar rahi thi) hata di gayi hain.
+   ═══════════════════════════════════════════════════════════════════ */
+.hero-curve { display: none; }
+.stats-strip { display: none; }
+
+/* Global fix taake horizontal scroll bilkul na aaye */
+html, body {
+  overflow-x: hidden; /* Sirf right-left ka scroll lock karega, up-down chalega */
+  max-width: 100%;
+}
+
+@media (max-width: 991.98px) {
+
+  /* ---------- HERO container ---------- */
+  .hero {
+    min-height: 100vh !important;
+    padding: 120px 0 90px !important;
+    overflow: hidden !important; /* Isko strict rakhne ke liye width limits zaroori hain */
+    width: 100% !important;
+    max-width: 100vw !important;
+    background: #000 !important;
+    position: relative !important;
+  }
+
+  /* Background image — zoom in properly on mobile */
+  .hero-bg {
+    background-size: cover !important;
+    background-position: 60% center !important;
+    background-repeat: no-repeat !important;
+    transform: scale(1.15) !important;
+    transform-origin: center center !important;
+  }
+  .hero-bg::after {
+    background: linear-gradient(180deg, rgba(0,0,0,0.55) 0%, rgba(0,0,0,0.80) 100%) !important;
+  }
+
+  /* ---------- EYEBROW → red pill badge ---------- */
+  .hero-eyebrow {
+    display: block !important;
+    background: transparent !important;
+    margin: 0 auto 22px !important; /* Centered with auto */
+    padding: 0 !important;
+    font-size: 0 !important;
+    color: transparent !important;
+    text-align: center !important;
+  }
+  .hero-eyebrow__dash { display: none !important; }
+  .hero-eyebrow::before {
+    content: "DUBAI'S TRUSTED";
+    display: inline-block;
+    background: var(--red);
+    color: #fff;
+    font-size: 0.72rem;
+    font-weight: 700;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    padding: 7px 14px;
+    border-radius: 3px;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* ---------- TITLE swap ---------- */
+  .hero-title {
+    font-size: 0 !important;
+    color: transparent !important;
+    line-height: 0 !important;
+    margin: 0 0 22px !important;
+    text-align: center !important;
+  }
+  .hero-title .hero-line2,
+  .hero-title .accent-g,
+  .hero-title .script-in { display: none !important; }
+
+  .hero-title::before,
+  .hero-title::after {
+    display: block;
+    font-family: 'Inter', sans-serif;
+    font-weight: 900;
+    font-size: clamp(2.5rem, 11vw, 4rem); /* Font size thoda chota kiya taake mobile par screen se bahar na jaye */
+    line-height: 0.95;
+    letter-spacing: -0.02em;
+    text-transform: uppercase;
+  }
+  .hero-title::before {
+    content: "MOVING";
+    color: #fff;
+  }
+  .hero-title::after {
+    content: "PARTNER";
+    color: var(--red);
+  }
+
+  /* ---------- DESCRIPTION swap ---------- */
+  .hero-desc-wrap {
+    margin: 0 auto 28px !important; /* auto lagaya taake horizontally center rahe aur screen se bahar na bhage */
+    max-width: 90% !important;
+  }
+  .hero-desc-wrap .hero-desc,
+  .hero-desc-wrap p { display: none !important; }
+  .hero-desc-wrap::before {
+    content: "Safe, secure and timely relocation services across Dubai, Al Ain, Abu Dhabi, Sharjah & beyond.";
+    display: block;
+    color: rgba(240,240,240,0.85);
+    font-size: 0.95rem;
+    line-height: 1.55;
+    font-family: 'Inter', sans-serif;
+    text-align: center;
+  }
+
+  /* ---------- BUTTONS full-width stacked ---------- */
+  .hero-btns {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 14px !important;
+    width: 90% !important; /* Width ko 100% se kam kar ke safe kiya */
+    max-width: 380px !important;
+    margin-left: auto !important;
+    margin-right: auto !important;
+  }
+  .btn-hero-primary,
+  .btn-hero-outline {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 10px !important;
+    width: 100% !important;
+    height: 56px !important;
+    padding: 0 20px !important;
+    font-size: 0.85rem !important;
+    font-weight: 700 !important;
+    letter-spacing: 0.1em !important;
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+  }
+  .btn-hero-primary { background: var(--red) !important; color: #fff !important; border: none !important; }
+  .btn-hero-outline { background: #000 !important; color: #fff !important; border: 1.5px solid #fff !important; }
+
+  /* ---------- RED CURVED SHAPE (Fixed) ---------- */
+  .hero-curve {
+    display: block !important;
+    position: absolute;
+    left: 0; right: 0; bottom: -1px; /* Screen ke andar hi lock kiya */
+    width: 100%;
+    height: 90px;
+    background: var(--red);
+    border-top-left-radius: 50% 40px; /* Radius curve ko safe banaya */
+    border-top-right-radius: 50% 40px;
+    z-index: 2;
+    pointer-events: none;
+  }
+
+  /* Desktop features hide on mobile */
+  .hero-features { display: none !important; }
+
+  /* ---------- STATS CARD ---------- */
+  .stats-strip {
+    display: block !important;
+    background: #fff;
+    padding: 22px 12px 10px;
+    margin: -30px 16px 24px;
+    border-radius: 14px;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.10);
+    position: relative;
+    z-index: 4;
+  }
+  /* Grid ko 4 columns se badal kar 2x2 grid banaya mobile par, taake overflow na ho */
+  .stats-card { 
+    display: grid; 
+    grid-template-columns: repeat(2, 1fr); 
+    gap: 12px; 
+  }
+  .stat-item { text-align: center; padding: 6px 2px; }
+  .stat-icon { width: 30px; height: 30px; margin: 0 auto 8px; color: var(--red); }
+  .stat-icon svg { width: 100%; height: 100%; }
+  .stat-num { font-size: 1.15rem; font-weight: 800; color: #111; line-height: 1; margin-bottom: 6px; }
+  .stat-label { font-size: 0.68rem; color: #555; line-height: 1.25; font-weight: 500; }
+}
+
+/* Extra small phones (Fixed viewport clamp values) */
+@media (max-width: 380px) {
+  .hero-title::before,
+  .hero-title::after { font-size: 2.4rem !important; } /* Text mazeed safe kiya */
+  .stat-num { font-size: 1rem; }
+  .stat-label { font-size: 0.62rem; }
+  .stats-strip { padding: 18px 8px 8px; margin: -25px 10px 20px; }
 }

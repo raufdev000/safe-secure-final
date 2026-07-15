@@ -306,81 +306,119 @@ body{ margin:0; background:#000; font-family:'Poppins',system-ui,sans-serif; col
       <li class="nav-item"><a class="nav-link" href="#" style="color:var(--red)!important;font-weight:500;">Book Now</a></li>
     </ul>
   </div>
-</div>
-<!-- ═══════════════════════ HERO ═══════════════════════ -->
-<section class="hero">
-  <div class="hero-bg"></div>
+</div><!-- ═══════════════════════ HERO SECTION ═══════════════════════ -->
+<section class="hero-section">
+  <div class="hero-bg" aria-hidden="true"></div>
 
   <div class="container-fluid px-4 px-sm-5 hero-content">
-    <div class="row justify-content-center">
-      <div class="col-12 col-md-10 col-lg-8 fade-slow">
+    <div class="row justify-content-center justify-content-lg-start">
+      <div class="col-12 col-md-10 col-lg-6 fade-slow">
+
+        <p class="hero-eyebrow">
+          <span class="hero-eyebrow__badge">Dubai's Trusted</span>
+        </p>
 
         <h1 class="hero-title">
-          <span class="accent-g">Safe</span>
+          <span class="hero-line1">MOVING</span>
+          <span class="hero-line2"><span class="accent-g">PARTNER</span></span>
         </h1>
-        <div class="hero-line2">
-          <span class="script-in">&</span>Secure
-        </div>
 
-        <div class="hero-divider"></div>
-
-        <div class="hero-desc-wrap">
-          <p class="badge-desc">
-            Your premium trusted partner for stress-free relocation across Dubai, Al Ain, Abu Dhabi, Sharjah & beyond. We execute every logistical transition with absolute precision.
-          </p>
-        </div>
+        <p class="hero-desc">
+          Safe, secure and timely relocation services across Dubai, Al Ain,
+          Abu Dhabi, Sharjah &amp; beyond.
+        </p>
 
         <div class="hero-btns">
-          <a href="#" class="btn-hero-primary">Get a Free Quote <span>→</span></a>
-          <a href="#" class="btn-hero-outline">Our Services <span>→</span></a>
+          <a href="#" class="btn-hero-primary">
+            <i class="bi bi-pencil-square"></i> Get A Free Quote
+            <i class="bi bi-arrow-right btn-arrow"></i>
+          </a>
+          <a href="tel:+971524402005" class="btn-hero-outline">
+            <i class="bi bi-telephone-fill"></i> Call Now
+          </a>
         </div>
 
       </div>
     </div>
   </div>
 
-  <div class="hero-features fade-reveal">
-    <div class="feature-item">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-      </div>
-      <div>
-        <div class="feature-title">Safe Handling</div>
-        <div class="feature-sub">We treat your belongings with maximum care.</div>
-      </div>
-    </div>
+  <!-- Curved red shape at bottom (mobile only) -->
+  <div class="hero-curve" aria-hidden="true"></div>
+</section>
 
-    <div class="feature-item">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+<!-- ═══════════════════════ MOBILE STATS STRIP ═══════════════════════ -->
+<section class="stats-strip">
+  <div class="stats-card">
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
       </div>
-      <div>
-        <div class="feature-title">On-Time Delivery</div>
-        <div class="feature-sub">Punctual, reliable & always on schedule.</div>
-      </div>
+      <div class="stat-num">10+</div>
+      <div class="stat-label">Years of<br>Experience</div>
     </div>
-
-    <div class="feature-item">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
       </div>
-      <div>
-        <div class="feature-title">Secure Packing</div>
-        <div class="feature-sub">High-quality packing for complete protection.</div>
-      </div>
+      <div class="stat-num">5K+</div>
+      <div class="stat-label">Successful<br>Moves</div>
     </div>
-
-    <div class="feature-item">
-      <div class="feature-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="12" r="10"/><path d="M8 14s1.5 2 4 2 4-2 4-2"/><line x1="9" y1="9" x2="9.01" y2="9"/><line x1="15" y1="9" x2="15.01" y2="9"/></svg>
       </div>
-      <div>
-        <div class="feature-title">Expert Team</div>
-        <div class="feature-sub">Trained professionals you can trust.</div>
+      <div class="stat-num">100%</div>
+      <div class="stat-label">Customer<br>Satisfaction</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
       </div>
+      <div class="stat-num">UAE</div>
+      <div class="stat-label">Wide<br>Coverage</div>
     </div>
   </div>
 </section>
+
+<!-- ═══════════════════════ FEATURES (desktop strip) ═══════════════════════ -->
+<div class="hero-features fade-reveal">
+  <div class="feature-item">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+    </div>
+    <div>
+      <div class="feature-title">Safe Handling</div>
+      <div class="feature-sub">We treat your belongings with maximum care.</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+    </div>
+    <div>
+      <div class="feature-title">On-Time Delivery</div>
+      <div class="feature-sub">Punctual, reliable &amp; always on schedule.</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+    </div>
+    <div>
+      <div class="feature-title">Secure Packing</div>
+      <div class="feature-sub">High-quality packing for complete protection.</div>
+    </div>
+  </div>
+  <div class="feature-item">
+    <div class="feature-icon">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    </div>
+    <div>
+      <div class="feature-title">Expert Team</div>
+      <div class="feature-sub">Trained professionals you can trust.</div>
+    </div>
+  </div>
+</div>
 
 <main>
     <section class="premium-about">
