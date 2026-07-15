@@ -6,448 +6,289 @@
   <title>Safe & Secure Motors</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"/>
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css">
-<style>
-  :root {
-  --red: #c0000c;
-  --black: #000000;
-  --dark: #0e0e0e;
-  --white: #f0f0f0;
+  <style>
+:root{
+  --red:#c0000c;
+  --ease:cubic-bezier(.22,.61,.36,1);
 }
-* { margin: 0; padding: 0; box-sizing: border-box; }
-body {
-  background: var(--black);
-  color: var(--white);
-  font-family: 'Inter', sans-serif;
-  overflow-x: hidden;
+body{ margin:0; background:#000; font-family:'Poppins',system-ui,sans-serif; color:#fff; }
+
+/* ════════════ WHITE GLOVE HERO ════════════ */
+.wg{
+  position:relative;
+  min-height:100vh;
+  display:flex; align-items:center;
+  padding:clamp(40px,8vw,110px) 0;
+  overflow:hidden;
+  background:radial-gradient(130% 100% at 72% 50%, #3a3a3a 0%, #1c1c1c 32%, #0a0a0a 62%, #000 88%);
 }
 
-/* ══════════ NAVBAR ══════════ */
-.site-nav {
-  position: absolute;
-  top: 0; left: 0; right: 0;
-  z-index: 100;
-  display: flex;
-  align-items: stretch;
-  height: 92px;
+/* ---- BACKGROUND IMAGE (yahan apni large image lagayen) ---- */
+.wg__bg{
+  position:absolute; inset:0; z-index:0;
+  background-image:url('whiteglov.webp');   /* ← APNI IMAGE YAHAN */
+  background-size:cover;
+  background-position:center right;          /* image ka konsa hissa dikhe */
+  background-repeat:no-repeat;
+}
+.wg__bg::after{                              /* text parhne ke liye dark wash */
+  content:"";
+  position:absolute; inset:0;
+  background:
+    linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.78) 38%, rgba(0,0,0,.35) 62%, rgba(0,0,0,.55) 100%),
+    linear-gradient(180deg, rgba(0,0,0,.35) 0%, transparent 40%, rgba(0,0,0,.55) 100%);
 }
 
-.nav-hamburger {
-  width: 80px;
-  background: var(--red);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  cursor: pointer;
-  flex-shrink: 0;
-  border: none;
-  outline: none;
-  align-self: stretch;
+/* ---- SATIN FOLDS: 4 layered sheets of light, alag angle + blur ---- */
+.wg__silk{ position:absolute; inset:-25%; pointer-events:none; }
+.wg__silk span{
+  position:absolute; inset:0;
+  background:linear-gradient(100deg,
+    transparent 30%,
+    rgba(255,255,255,.13) 40%,
+    rgba(255,255,255,.03) 46%,
+    transparent 54%);
+  filter:blur(10px);
 }
-.nav-hamburger span,
-.nav-hamburger span::before,
-.nav-hamburger span::after {
-  display: block;
-  width: 24px;
-  height: 2px;
-  background: #fff;
-  position: relative;
-  transition: all 0.3s;
+.wg__silk span:nth-child(1){ transform:rotate(-6deg) translateX(-8%); opacity:.9; }
+.wg__silk span:nth-child(2){ transform:rotate(4deg)  translateX(6%);  filter:blur(26px); opacity:.55; }
+.wg__silk span:nth-child(3){
+  background:linear-gradient(84deg, transparent 48%, rgba(255,255,255,.10) 58%, transparent 66%);
+  transform:rotate(-14deg); filter:blur(40px); opacity:.5;
 }
-.nav-hamburger span::before,
-.nav-hamburger span::after {
-  content: '';
-  position: absolute;
-}
-.nav-hamburger span::before { top: -7px; }
-.nav-hamburger span::after  { top:  7px; }
-
-.desktop-nav {
-  display: flex;
-  align-items: center;
-  gap: 2rem;
-  padding: 0 2rem;
-  flex: 1;
-  justify-content: center;
-}
-.desktop-nav-link {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.90rem;
-  font-weight: 500;
-  letter-spacing: 0.12em;
-  text-transform: uppercase;
-  color: rgba(240,240,240,0.75);
-  text-decoration: none;
-  position: relative;
-  transition: color 0.25s;
-}
-.desktop-nav-link::after {
-  content: '';
-  position: absolute;
-  bottom: -4px;
-  left: 0;
-  width: 0;
-  height: 1px;
-  background: var(--red);
-  transition: width 0.3s;
-}
-.desktop-nav-link:hover,
-.desktop-nav-link.active { color: #fff; }
-.desktop-nav-link:hover::after,
-.desktop-nav-link.active::after { width: 100%; }
-.nav-logo {
-  margin-left: auto;
-  display: flex;
-  align-items: center;
-  /* White background ko transparent kar diya taake logo direct image ke upar aaye */
-  background: transparent !important; 
-  padding: 0 1rem;
-  margin-right: 0; /* Extra margins khatam */
-  height: 100%;
-  width: auto;
-  min-width: unset;
+.wg__silk span:nth-child(4){
+  background:linear-gradient(115deg, transparent 12%, rgba(255,255,255,.07) 22%, transparent 30%);
+  transform:rotate(8deg); filter:blur(50px); opacity:.6;
 }
 
-.nav-logo-img img {
-  height: clamp(99px, 6vw, 120px);
-  width: auto;
-  object-fit: contain;
-  display: block;
-  /* Logo transparent hone ke baad agar dark image ke upar dundhla lage, 
-      toh brightness badhane ke liye aap niche wala filter use kar sakte hain (Optional) */
-  /* filter: drop-shadow(0px 2px 8px rgba(0,0,0,0.5)); */
+/* ---- spotlight behind the product ---- */
+.wg__spot{
+  position:absolute; right:14%; top:44%;
+  width:min(66vw,720px); aspect-ratio:1;
+  transform:translateY(-50%);
+  background:
+    radial-gradient(circle, rgba(255, 255, 255, 0) 0%, transparent 55%),
+    radial-gradient(circle, rgba(8, 8, 8, 0) 0%, transparent 62%);
+  pointer-events:none;
+  animation:wgBreathe 10s ease-in-out infinite;
+}
+@keyframes wgBreathe{ 0%,100%{transform:translateY(-50%) scale(1)} 50%{transform:translateY(-53%) scale(1.06)} }
+
+.wg .container{ position:relative; z-index:3; }
+
+/* ---- LEFT: typography (reference jaisi — thin geometric sans) ---- */
+.wg__intro{
+  font-size:clamp(1.1rem,1.6vw,1.45rem);
+  font-weight:300; color:#fff;
+  margin:0 0 6px; letter-spacing:.01em;
+}
+.wg__lockup{
+  display:flex; align-items:center; gap:.22em;
+  margin:0 0 4px;
+}
+.wg__initials{
+  font-size:clamp(3.6rem,7vw,6.4rem);
+  font-weight:300; line-height:.9;
+  letter-spacing:-.02em;
+  color:#fff;
+}
+.wg__initials b{ font-weight:300; color:var(--red); }
+.wg__words{
+  display:flex; flex-direction:column;
+  font-size:clamp(1.6rem,3.1vw,2.9rem);
+  font-weight:400; line-height:1.02;
+  letter-spacing:-.01em;
+}
+.wg__tagline{
+  font-size:clamp(1.2rem,2.2vw,2rem);
+  font-weight:300; color:#fff;
+  margin:0 0 34px; letter-spacing:.01em;
+}
+.wg__copy{
+  color:rgba(255,255,255,.78);
+  font-weight:300; font-size:1rem; line-height:1.75;
+  max-width:46ch; margin:0 0 20px;
+}
+.wg__copy:last-of-type{ margin-bottom:0; }
+
+.wg__btn{
+  display:inline-flex; align-items:center; justify-content:center;
+  margin-top:40px;
+  min-width:200px; height:54px; padding:0 30px;
+  border:1px solid rgba(255,255,255,.55);
+  border-radius:30px;
+  background:transparent; color:#fff; text-decoration:none;
+  font-size:.95rem; font-weight:300;
+  position:relative; overflow:hidden;
+  transition:border-color .4s var(--ease);
+}
+.wg__btn::before{
+  content:""; position:absolute; inset:0;
+  background:var(--red); transform:translateY(101%);
+  transition:transform .45s var(--ease);
+}
+.wg__btn:hover{ color:#fff; border-color:var(--red); }
+.wg__btn:hover::before{ transform:translateY(0); }
+.wg__btn span{ position:relative; z-index:2; }
+
+.wg__links{
+  display:flex; align-items:center; flex-wrap:wrap;
+  gap:16px; margin-top:34px;
+  font-size:.95rem; font-weight:400;
+}
+.wg__links a{ color:#fff; text-decoration:none; transition:color .3s var(--ease); }
+.wg__links a:hover{ color:var(--red); }
+.wg__links i{ width:1px; height:16px; background:rgba(255,255,255,.35); display:inline-block; }
+
+/* ---- RIGHT: product stage (transparent PNG ke liye) ---- */
+.wg__stage{
+  position:relative;
+  display:flex; align-items:center; justify-content:center;
+  min-height:clamp(300px,44vw,600px);
+}
+.wg__hero-img{
+  position:relative; z-index:2;
+  width:100%; max-width:640px; height:auto;
+  display:block;
+  filter:drop-shadow(0 50px 70px rgba(0,0,0,.85));
+  animation:wgFloat 8s ease-in-out infinite;
+}
+@keyframes wgFloat{ 0%,100%{transform:translateY(0)} 50%{transform:translateY(-16px)} }
+
+/* image ke neeche ki chamak + reflection */
+.wg__shine{
+  position:absolute; z-index:1;
+  bottom:14%; left:50%; transform:translateX(-50%);
+  width:min(90%,620px); height:30px;
+  border-radius:50%;
+  background:radial-gradient(60% 100% at 50% 45%, rgba(255,255,255,.5), rgba(255,255,255,.08) 58%, transparent 78%);
+  filter:blur(4px);
+}
+.wg__shine::after{
+  content:"";
+  position:absolute; left:50%; top:90%;
+  transform:translateX(-50%);
+  width:72%; height:70px;
+  background:radial-gradient(50% 100% at 50% 0%, rgba(255,255,255,.12), transparent 72%);
+  filter:blur(12px);
 }
 
-/* ══════════ OFFCANVAS ══════════ */
-.offcanvas {
-  background: #0d0d0d !important;
-  border-right: 1px solid rgba(192,0,12,0.25) !important;
-  width: 280px !important;
+/* ---- responsive ---- */
+@media (max-width:991.98px){
+  .wg{ min-height:auto; text-align:center; }
+  .wg__lockup{ justify-content:center; }
+  .wg__copy{ margin-left:auto; margin-right:auto; }
+  .wg__links{ justify-content:center; }
+  .wg__stage{ margin-top:50px; min-height:280px; }
+  .wg__spot{ right:50%; transform:translate(50%,-50%); opacity:.75; }
+  @keyframes wgBreathe{ 0%,100%{transform:translate(50%,-50%) scale(1)} 50%{transform:translate(50%,-53%) scale(1.05)} }
 }
-.offcanvas-header { border-bottom: 1px solid rgba(192,0,12,0.15); }
-.offcanvas-title {
-  font-family: 'Cinzel', serif;
-  color: var(--white);
-  font-size: 0.95rem;
-  letter-spacing: 0.1em;
+@media (max-width:575.98px){
+  .wg__lockup{ flex-direction:column; gap:2px; }
+  .wg__btn{ width:100%; }
 }
-.btn-close { filter: invert(1) sepia(1) saturate(5) hue-rotate(300deg); }
-.offcanvas .nav-link {
-  color: rgba(240,240,240,0.7) !important;
-  font-size: 0.85rem;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  padding: 0.85rem 1.2rem;
-  border-bottom: 1px solid rgba(255,255,255,0.04);
-  transition: color 0.2s, padding-left 0.25s;
+@media (prefers-reduced-motion:reduce){
+  .wg__hero-img,.wg__spot{ animation:none; }
 }
-.offcanvas .nav-link:hover {
-  color: var(--red) !important;
-  padding-left: 1.8rem;
-}
-
-/* ══════════ HERO ══════════ */
-.hero {
-  position: relative;
-  width: 100%;
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  overflow: hidden;
-  background: var(--black);
-  padding-bottom: 120px;
+/* ---- NAV: scroll par smoothly fix ---- */
+.site-nav{
+  position:fixed;
+  top:0; left:0; right:0;
+  z-index:1040;
+  height:96px;                       /* apni nav ki height */
+  background:linear-gradient(180deg, rgba(0,0,0,.75), rgba(0,0,0,0));
+  transition:height .35s cubic-bezier(.22,.61,.36,1),
+             background .35s cubic-bezier(.22,.61,.36,1),
+             box-shadow .35s cubic-bezier(.22,.61,.36,1),
+             backdrop-filter .35s cubic-bezier(.22,.61,.36,1);
+  will-change:height, background;
 }
 
-.hero-bg {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(120deg, #000 0%, #111 30%, #1c1c1c 60%, #252525 100%);
-  background-image: url('https://kitpro.site/limoluxe/wp-content/uploads/sites/426/2025/07/Image2.jpg');
-  background-size: cover;
-  background-position: center center;
-  opacity: 75%;
+/* scroll ke baad — solid black bar */
+.site-nav.is-stuck{
+  height:70px;
+  background:rgba(8,8,8,.92);
+  backdrop-filter:blur(14px);
+  -webkit-backdrop-filter:blur(14px);
+  box-shadow:0 10px 34px rgba(0,0,0,.55);
 }
-.hero-bg::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    100deg,
-    rgba(0,0,0,0.88) 0%,
-    rgba(0,0,0,0.55) 40%,
-    rgba(0,0,0,0.10) 100%
-  );
+.site-nav.is-stuck::after{
+  content:"";
+  position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:linear-gradient(90deg, var(--red), rgba(192,0,12,0) 60%);
 }
 
-.hero-content {
-  position: relative;
-  z-index: 2;
-  padding-top: 100px;
-  padding-bottom: 60px;
-  width: 100%;
+/* logo bhi saath me shrink ho */
+.site-nav.is-stuck .nav-logo-img img{
+  transform:scale(.82);
+  transition:transform .35s cubic-bezier(.22,.61,.36,1);
 }
+.nav-logo-img img{ transition:transform .35s cubic-bezier(.22,.61,.36,1); }
 
-/* ══════════ HERO TEXT (UPDATED FOR MIDDLE ALIGNMENT) ══════════ */
-.hero-title {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(6rem, 14vw, 11rem);
-  line-height: 0.88;
-  color: var(--white);
-  letter-spacing: -0.015em;
-  margin-bottom: 0.5rem;
-  text-align: center;
-}
-.hero-title .accent-g {
-  color: var(--red);
-  font-style: italic;
-  font-weight: 400;
-}
+/* hero ab nav ke neeche na chhupe */
+.hero{ padding-top:96px; }
 
-.hero-line2 {
-  font-family: 'Cormorant Garamond', serif;
-  font-weight: 300;
-  font-size: clamp(6rem, 12vw, 10rem);
-  line-height: 1;
-  color: var(--white);
-  letter-spacing: -0.01em;
-  margin-bottom: 1.5rem;
-  text-align: center;
-}
-.hero-line2 .script-in {
-  font-family: 'Dancing Script', cursive;
-  color: var(--red);
-  font-size: 0.9em;
-  font-weight: 600;
-  margin-right: 0.08em;
-  letter-spacing: 0;
-}
-
-
-.hero-desc-wrap {
-  border-left: none; /* Removed left border for better symmetry in center */
-  border-top: 1px solid rgba(192,0,12,0.4); /* Optional aesthetic top fine line instead */
-  border-bottom: 1px solid rgba(192,0,12,0.4);
-  padding: 0.8rem 0;
-  margin: 0 auto 2rem auto;
-  max-width: 580px; /* Expanded slightly for centralized text flow */
-}
-.badge-desc {
-  font-family: 'Inter', sans-serif;
-  font-size: 0.98rem;
-  color: rgba(240,240,240,0.75);
-  line-height: 1.6;
-  text-align: center;
-}
-
-/* ══════════ BUTTONS ══════════ */
-.hero-btns {
-  display: flex;
-  gap: 1rem;
-  flex-wrap: wrap;
-  justify-content: center; /* Centered buttons alignment */
-}
-.btn-hero-primary {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: var(--red);
-  color: #fff;
-  border: 1px solid var(--red);
-  padding: 0.75rem 1.8rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.25s, color 0.25s;
-}
-.btn-hero-primary:hover { background: #a0000a; border-color: #a0000a; color: #fff; }
-
-.btn-hero-outline {
-  display: inline-flex;
-  align-items: center;
-  gap: 0.5rem;
-  background: transparent;
-  color: var(--white);
-  border: 1px solid rgba(240,240,240,0.55);
-  padding: 0.75rem 1.8rem;
-  font-family: 'Inter', sans-serif;
-  font-size: 0.82rem;
-  font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
-  text-decoration: none;
-  transition: background 0.25s, border-color 0.25s;
-}
-.btn-hero-outline:hover { background: rgba(255,255,255,0.08); border-color: #fff; color: #fff; }
-
-/* ══════════ FEATURE BOXES ══════════ */
-.hero-features {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  background: rgba(10,10,10,0.92);
-  border-top: 1px solid rgba(255,255,255,0.06);
-  z-index: 3;
-}
-.feature-item {
-  display: flex;
-  align-items: flex-start;
-  gap: 14px;
-  padding: 1.4rem 1.6rem;
-  border-right: 1px solid rgba(255,255,255,0.06);
-}
-.feature-item:last-child { border-right: none; }
-.feature-icon {
-  width: 46px;
-  height: 46px;
-  border-radius: 50%;
-  background: rgba(192,0,12,0.12);
-  border: 1px solid rgba(192,0,12,0.3);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-shrink: 0;
-}
-.feature-icon svg {
-  width: 28px;
-  height: 28px;
-  stroke: var(--red);
-}
-.feature-title {
-  font-size: 0.99rem;
-  font-weight: 600;
-  color: var(--white);
-  margin-bottom: 4px;
-}
-.feature-sub {
-  font-size: 0.90rem;
-  color: rgba(240,240,240,0.5);
-  line-height: 1.5;
-}
-
-/* ══════════ ABOUT SECTION SOCIAL ══════════ */
-.social-badge-strip {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  z-index: 10;
-}
-.social-tile {
-  width: 44px;
-  height: 44px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: #fff;
-  font-size: 15px;
-  text-decoration: none;
-}
-.bg-red { background: #c0000c; }
-.bg-grey { background: #444; }
-.bg-dark-grey { background: #222; }
-
-/* ══════════ RESPONSIVE ══════════ */
-@media (max-width: 991px) {
-  .right-image-side {
-    min-height: 320px;
-    position: relative;
-    margin-top: 0;
-    z-index: 1;
-  }
-  .main-image-wrapper {
-    height: 320px;
-    overflow: hidden;
-    position: relative;
-    z-index: 1;
-  }
-  .main-image-wrapper .actual-img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center bottom;
-  }
-  .premium-about .row { flex-direction: column-reverse; }
-  .left-content-side {
-    position: relative;
-    z-index: 2;
-    background: #0a0a0a;
-  }
-  .white-cut-backdrop { display: none; }
-  .social-badge-strip {
-    flex-direction: row;
-    position: absolute;
-    bottom: 12px;
-    right: 0;
-    top: auto;
-    transform: none;
-    z-index: 10;
-  }
-  .content-container { padding: 2rem 1.2rem; }
-  .feature-grid .mini-car-box img {
-    height: 140px;
-    object-fit: cover;
-    width: 100%;
-  }
-}
-
-@media (max-width: 768px) {
-  .hero { padding-bottom: 0; min-height: auto; }
-  .hero-content { padding-top: 90px; padding-bottom: 40px; }
-  .hero-title { line-height: 0.92; }
-  .badge-desc { font-size: 0.8rem; }
-  .hero-features {
-    grid-template-columns: repeat(2, 1fr);
-    position: relative;
-  }
-  .feature-item:nth-child(2) { border-right: none; }
-}
-
-@media (max-width: 480px) {
-  .hero-features { grid-template-columns: 1fr; }
-  .feature-item { border-right: none; border-bottom: 1px solid rgba(255,255,255,0.06); }
-  .nav-logo-img img { height: 80px; }
+@media (max-width:991.98px){
+  .site-nav{ height:78px; }
+  .site-nav.is-stuck{ height:64px; }
+  .hero{ padding-top:78px; }
 }
 </style>
 </head>
 <body>
-<!-- ═══════════════════════ NAVBAR ═══════════════════════ -->
-<nav class="site-nav">
-
-  <!-- Hamburger — sirf mobile/tablet -->
-  <button class="nav-hamburger d-lg-none"
-          data-bs-toggle="offcanvas"
-          data-bs-target="#navOffcanvas"
-          aria-label="Open menu">
+<!-- ══════════ NAVBAR ══════════ -->
+<header class="ssm-nav" id="ssmNav">
+  <button class="ssm-nav__burger" type="button"
+          data-bs-toggle="offcanvas" data-bs-target="#ssmDrawer"
+          aria-label="Open menu" aria-controls="ssmDrawer">
     <span></span>
   </button>
 
-  <!-- Desktop links — sirf large screen -->
-  <div class="desktop-nav d-none d-lg-flex">
-    <a class="desktop-nav-link active" href="#">Home</a>
-    <a class="desktop-nav-link" href="#">About Us</a>
-    <a class="desktop-nav-link" href="#">Services</a>
-    <a class="desktop-nav-link" href="#">Our Process</a>
-    <a class="desktop-nav-link" href="#">Testimonials</a>
-    <a class="desktop-nav-link" href="#">Contact Us</a>
+  <nav class="ssm-nav__menu" aria-label="Main">
+    <a class="ssm-nav__link is-active" href="index.html">Home</a>
+    <a class="ssm-nav__link" href="about.html">About Us</a>
+    <a class="ssm-nav__link " href="services.html">Services</a>
+    <a class="ssm-nav__link" href="contact.html">Contact Us</a>
+        <a class="ssm-nav__link" href="index.html#testimonials">Testimonials</a>
+  </nav>
+
+  <a class="ssm-nav__brand" href="index.html" aria-label="Safe and Secure Movers — home">
+    <img src="WhatsApp_Image_2026-07-14_at_6.08.46_AM-removebg-preview.png" alt="Safe &amp; Secure Movers">
+  </a>
+
+  <a class="ssm-nav__cta" href="tel:+971524402005">
+    <i class="bi bi-telephone-fill"></i>
+    <span>+971 52 440 2005</span>
+  </a>
+</header>
+<!-- ══════════ SIDE DRAWER ══════════ -->
+<div class="offcanvas offcanvas-end ssm-drawer" tabindex="-1" id="ssmDrawer" aria-labelledby="ssmDrawerLabel">
+  <div class="offcanvas-header">
+    <a class="ssm-drawer__logo" href="index.html" id="ssmDrawerLabel">
+      <img src="WhatsApp_Image_2026-07-14_at_6.08.46_AM-removebg-preview.png" alt="Safe &amp; Secure Movers">
+    </a>
+    <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
   </div>
 
-  <div class="nav-logo">
-    <div class="nav-logo-img">
-      <img src="safe_secure_logo_red_white_Nero_AI_Background_Remover_transparent (1).png" alt="Logo">
+  <div class="offcanvas-body p-0 d-flex flex-column justify-content-between">
+    <ul class="ssm-drawer__list">
+      <li><a class="is-active" href="index.html" data-bs-dismiss="offcanvas">Home</a></li>
+      <li><a href="about.html" data-bs-dismiss="offcanvas">About Us</a></li>
+      <li><a href="services.html" data-bs-dismiss="offcanvas">Services</a></li>
+      <li><a href="contact.html" data-bs-dismiss="offcanvas">Contact Us</a></li>
+            <li><a href="index.html#testimonials" data-bs-dismiss="offcanvas">Testimonials</a></li>
+    </ul>
+
+    <div class="ssm-drawer__foot">
+      <a class="ssm-drawer__cta" href="tel:+971524402005" data-bs-dismiss="offcanvas">
+        <i class="bi bi-telephone-fill"></i> +971 52 440 2005
+      </a>
     </div>
   </div>
-</nav>
-
+</div>
 <!-- ═══════════════════════ OFFCANVAS ═══════════════════════ -->
 <div class="offcanvas offcanvas-start" tabindex="-1" id="navOffcanvas">
   <div class="offcanvas-header">
@@ -596,6 +437,47 @@ body {
 
         </div>
     </div>
+</section>
+
+<section class="wg">
+  <!-- background image -->
+  <div class="wg__bg"></div>
+
+  <!-- CSS satin background -->
+  <div class="wg__silk"><span></span><span></span><span></span><span></span></div>
+  <div class="wg__spot"></div>
+<div class="container">
+    <div class="row align-items-center g-4 g-lg-5">
+
+      <!-- LEFT -->
+      <div class="col-lg-6 col-12">
+        <p class="wg__intro">Introducing</p>
+
+        <div class="wg__lockup">
+          <span class="wg__initials">S<b>&amp;</b>S</span>
+          <span class="wg__words">
+            <span>Safe &amp;</span>
+            <span>Secure</span>
+          </span>
+        </div>
+
+        <p class="wg__tagline">Movers Dubai</p>
+
+        <p class="wg__copy">Dubai's trusted name in relocation — moving families, villas and offices across the UAE with the care they deserve.</p>
+        <p class="wg__copy">One dedicated coordinator handles your entire move: the survey, the packing crew, the trucks and the final placement of every piece. Fully insured, GPS-tracked, and priced upfront.</p>
+        <p class="wg__copy">Move with confidence.</p>
+
+        <a href="contact.html" class="wg__btn"><span>Get a Free Quote</span></a>
+
+        <div class="wg__links">
+          <a href="#">Villas</a><i></i>
+          <a href="#">Apartments</a><i></i>
+          <a href="#">Offices</a>
+        </div>
+      </div>
+
+    </div>
+  </div>
 </section>
 <section class="glass-services-section">
     <!-- Overlay to keep background image elegant and high-contrast -->
@@ -870,123 +752,7 @@ body {
     </div>
 </section>
 <!-- Premium Dark Estimate/Quote Section Start -->
-<section id="quote" class="premium-quote-section position-relative overflow-hidden">
-    <!-- Deep Gradient Black/Maroon Layer over the background image -->
-    <div class="quote-bg-overlay"></div>
-    
-    <div class="container position-relative z-index-5">
-        <div class="row g-5 align-items-start">
-            
-            <!-- LEFT COLUMN: Contact & Badges Info -->
-            <div class="col-lg-5 col-12 slide-left-fast">
-                <div class="quote-info-panel">
-                    <span class="quote-sub-badge"><span class="star-accent">*</span> Free Estimate</span>
-                    <h2 class="quote-main-title">Get your free<br>moving <span class="serif-italic">quote</span></h2>
-                    <p class="quote-desc-text">Fill in your details and we'll get back to you within 24 hours with a transparent, competitive price.</p>
-                    
-                    <!-- Direct Connection Links -->
-                    <div class="quote-contact-stack">
-                        <!-- Phone / WhatsApp Row -->
-                        <div class="contact-item-row d-flex align-items-center">
-                            <div class="contact-icon-box">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3333" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                            </div>
-                            <div class="contact-details-box">
-                                <div class="contact-main-value">+971 52 440 2005</div>
-                                <div class="contact-label-tag">Call or WhatsApp</div>
-                            </div>
-                        </div>
 
-                        <!-- Email Row -->
-                        <div class="contact-item-row d-flex align-items-center">
-                            <div class="contact-icon-box">
-                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#ff3333" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-                            </div>
-                            <div class="contact-details-box">
-                                <div class="contact-main-value">info@safeandsecuremovers.com</div>
-                                <div class="contact-label-tag">Email us anytime</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- RIGHT COLUMN: Premium Broad Form Structure -->
-            <div class="col-lg-7 col-12 fade-slow">
-                <div class="quote-form-card">
-                    <form action="#" method="POST" id="quoteRequestForm">
-                        
-                        <!-- Row 1: General Details -->
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Full Name</label>
-                                <input type="text" placeholder="Your name" class="premium-form-input" required>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Phone Number</label>
-                                <input type="tel" placeholder="+971 XX XXX XXXX" class="premium-form-input" required>
-                            </div>
-                        </div>
-
-                        <!-- Row 2: Mail & Calendar -->
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Email Address</label>
-                                <input type="email" placeholder="your@email.com" class="premium-form-input" required>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Moving Date</label>
-                                <input type="date" class="premium-form-input" required>
-                            </div>
-                        </div>
-
-                        <!-- Row 3: Locations Handling -->
-                        <div class="row g-4 mb-4">
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Moving From</label>
-                                <input type="text" placeholder="Current location" class="premium-form-input" required>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Moving To</label>
-                                <input type="text" placeholder="Destination" class="premium-form-input" required>
-                            </div>
-                        </div>
-
-                        <!-- Row 4: Specifications Select Filters -->
-                        <div class="row g-4 mb-5">
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Type of Move</label>
-                                <select class="premium-form-input form-select-custom">
-                                    <option value="" disabled selected>Select type</option>
-                                    <option>Residential</option>
-                                    <option>Commercial</option>
-                                    <option>Studio / Office</option>
-                                    <option>International</option>
-                                </select>
-                            </div>
-                            <div class="col-md-6 col-12">
-                                <label class="input-form-label">Long Distance?</label>
-                                <select class="premium-form-input form-select-custom">
-                                    <option value="" disabled selected>Select</option>
-                                    <option>Yes</option>
-                                    <option>No</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <!-- Action Submit Triggers -->
-                        <button type="submit" id="submitBtn" class="premium-submit-btn">
-                            Request Your Free Quote
-                            <span class="btn-arrow">→</span>
-                        </button>
-
-                    </form>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
 <section class="premium-testimonials py-5 position-relative">
     <div class="container py-4 position-relative z-index-2">
         
@@ -1079,383 +845,140 @@ body {
 </section>
 <!-- Premium Dark Estimate/Quote Section End -->
 </main>
-<style>
-/* ══════════════════════════════════════════
-   FOOTER BASE & BACKGROUND
-   ══════════════════════════════════════════ */
-.premium-footer {
-  background-color: #0c0c0c;
-  position: relative;
-  overflow: hidden;
-  font-family: 'Inter', sans-serif;
-}
 
-.footer-bg-overlay {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(180deg, rgba(2,2,2,0.99) 0%, rgba(20,2,2,0.98) 60%, rgba(10,1,1,0.99) 100%);
-  z-index: 1;
-}
+<footer class="ftr">
 
-.z-index-5 { z-index: 5; }
+  <!-- MARQUEE -->
+  <div class="ftr__marquee">
+    <div class="ftr__marquee-track">
+      <span class="ftr__mq">Dubai <span class="ftr__mq-dot">&#9679;</span> Abu Dhabi <span class="ftr__mq-dot">&#9679;</span> Sharjah <span class="ftr__mq-dot">&#9679;</span> Ajman <span class="ftr__mq-dot">&#9679;</span> Al Ain <span class="ftr__mq-dot">&#9679;</span> Ras Al Khaimah <span class="ftr__mq-dot">&#9679;</span> Fujairah <span class="ftr__mq-dot">&#9679;</span>&nbsp;</span>
+      <span class="ftr__mq">Dubai <span class="ftr__mq-dot">&#9679;</span> Abu Dhabi <span class="ftr__mq-dot">&#9679;</span> Sharjah <span class="ftr__mq-dot">&#9679;</span> Ajman <span class="ftr__mq-dot">&#9679;</span> Al Ain <span class="ftr__mq-dot">&#9679;</span> Ras Al Khaimah <span class="ftr__mq-dot">&#9679;</span> Fujairah <span class="ftr__mq-dot">&#9679;</span>&nbsp;</span>
+    </div>
+  </div>
 
-/* ══════════════════════════════════════════
-   UPPER CTA SECTION
-   ══════════════════════════════════════════ */
-.footer-cta-title {
-  font-family: 'Poppins', sans-serif;
-  color: #ffffff;
-  font-size: clamp(2.2rem, 5vw, 4rem);
-  font-weight: 300;
-  line-height: 1.15;
-  letter-spacing: -1.5px;
-}
-.footer-cta-title .serif-italic-red {
-  font-family: 'Playfair Display', serif;
-  font-style: italic;
-  color: #ff3333;
-  font-weight: 400;
-}
-
-.footer-cta-btn {
-  background-color: rgba(255,255,255,0.03) !important;
-  border: 1px solid rgba(255,255,255,0.1) !important;
-  color: #ffffff !important;
-  font-size: 0.95rem;
-  font-weight: 500;
-  letter-spacing: 1px;
-  transition: all 0.3s ease !important;
-}
-.footer-cta-btn .btn-icon-svg {
-  color: #ff3333;
-  transition: transform 0.3s ease;
-}
-.footer-cta-btn:hover {
-  background-color: #ff3333 !important;
-  border-color: #ff3333 !important;
-  box-shadow: 0 10px 25px rgba(255,51,51,0.3);
-}
-.footer-cta-btn:hover .btn-icon-svg {
-  color: #ffffff !important;
-  transform: rotate(15deg);
-}
-
-/* ══════════════════════════════════════════
-   BRAND & CONTACT INFO (Perfect Spacing)
-   ══════════════════════════════════════════ */
-.brand-col-wrapper {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: flex-start;
-}
-
-.footer-logo-box {
-  margin-bottom: 8px;
-}
-.footer-logo-box img {
-  height: 100px; /* Clean crisp size */
-  width: auto;
-  object-fit: contain;
-  display: block;
-}
-
-.footer-brand-title {
-  font-size: 1.4rem;
-  font-weight: 700;
-  color: #ffffff;
-  letter-spacing: -0.5px;
-  line-height: 1.2;
-}
-.footer-brand-sub {
-  font-size: 1.1rem;
-  color: #ff3333;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  margin-top: 0px;
-  margin-bottom: 15px;
-}
-
-/* Contact List Setup */
-.footer-contact-list {
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-  width: 100%;
-}
-.footer-contact-list li {
-  font-size: 0.95rem;
-  color: #ffffff;
-  display: flex;
-  align-items: start;
-  gap: 12px;
-}
-.footer-contact-list a {
-  color: #ffffff;
-  text-decoration: none;
-  transition: color 0.25s ease;
-}
-.footer-contact-list a:hover {
-  color: #ff3333;
-}
-.icon-red-tint {
-  color: #ff3333 !important;
-  flex-shrink: 0;
-  margin-top: 3px;
-}
-
-/* Social Media Icons */
-.footer-social-icon {
-  width: 36px;
-  height: 36px;
-  border-radius: 4px;
-  background-color: #0a291b;
-  color: #ffffff;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  text-decoration: none;
-  transition: transform 0.2s ease, background-color 0.2s ease;
-}
-.footer-social-icon:hover {
-  background-color: #ff3333;
-  color: #ffffff;
-  transform: translateY(-2px);
-}
-
-/* ══════════════════════════════════════════
-   GRID HEADINGS & LINKS (Desktop / Global Baseline)
-   ══════════════════════════════════════════ */
-.footer-grid-heading {
-  font-size: 1.1rem;
-  font-weight: 700;
-  text-transform: uppercase;
-  color: #ffffff !important; /* Perfect uniform visibility across sizes */
-  letter-spacing: 0.5px;
-  margin-top: 0 !important;
-  margin-bottom: 25px !important;
-  padding-top: 0 !important;
-  line-height: 1.2;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-}
-
-/* Dynamic dropdown icons clear block */
-.footer-grid-heading-arrow {
-  display: none; /* Desktop par hide rahega */
-}
-
-.footer-links-list {
-  display: flex;
-  flex-direction: column;
-  gap: 14px;
-  padding: 0;
-  margin: 0;
-}
-.footer-links-list a {
-  color: #8a8a8a; /* Image visibility clear premium look */
-  font-size: 0.98rem;
-  font-weight: 500;
-  text-decoration: none;
-  transition: color 0.25s ease, padding-left 0.25s ease;
-}
-.footer-links-list a:hover {
-  color: #ff3333;
-  padding-left: 4px;
-}
-
-/* ══════════════════════════════════════════
-   COPYRIGHT & LIVE STATUS STRIP
-   ══════════════════════════════════════════ */
-.copyright-text {
-  font-size: 0.88rem;
-  color: #555555;
-}
-.copyright-text a {
-  color: #777777;
-  text-decoration: none;
-}
-.indicator-text {
-  font-size: 0.82rem;
-  color: #666666;
-  font-weight: 500;
-}
-.live-indicator-box .h-2,
-.live-indicator-box .w-2 {
-  width: 8px !important;
-  height: 8px !important;
-}
-.animate-ping {
-  animation: ping 1.5s cubic-bezier(0,0,0.2,1) infinite;
-}
-@keyframes ping {
-  75%, 100% { transform: scale(2); opacity: 0; }
-}
-
-/* ══════════════════════════════════════════
-   STRICT MOBILE RESPONSIVE OPTIMIZATION
-   ══════════════════════════════════════════ */
-@media (max-width: 767.98px) {
-  .premium-footer {
-    text-align: left !important;
-  }
-  
-  .footer-cta-title { 
-    font-size: 2rem; 
-  }
-  
-  .brand-col-wrapper {
-    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
-    padding-bottom: 30px !important;
-    margin-bottom: 15px !important;
-  }
-
-  /* Structural adjustment for dropdown listings */
-  .footer-grid-heading {
-    color: #ffffff !important; /* Fixed clarity from dark tint error */
-    margin-bottom: 0 !important;
-    padding: 16px 0 !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-    cursor: pointer;
-  }
-  
-  /* Modern clean interactive indicator arrow matching image layout */
-  .footer-grid-heading-arrow {
-    display: inline-block !important;
-    width: 8px;
-    height: 8px;
-    border-right: 2px solid #8a8a8a;
-    border-bottom: 2px solid #8a8a8a;
-    transform: rotate(45deg);
-    transition: transform 0.3s ease;
-    margin-right: 5px;
-  }
-
-  /* Targets list container clean block updates */
-  .footer-links-list {
-    gap: 12px !important;
-    padding-top: 15px !important;
-    padding-bottom: 15px !important;
-    border-bottom: 1px solid rgba(255, 255, 255, 0.05) !important;
-  }
-  
-  .footer-links-list a {
-    font-size: 0.96rem;
-    color: #9c9c9c;
-  }
-
-  .copyright-row-box {
-    flex-direction: column !important;
-    gap: 15px !important;
-    text-align: center !important;
-    padding-top: 20px !important;
-  }
-}
-</style>
-
-<footer class="premium-footer position-relative border-top border-secondary-subtle overflow-hidden">
-  <div class="footer-bg-overlay"></div>
-
-  <div class="container position-relative z-index-5 pt-5 mt-2">
-    <div class="row justify-content-center text-center mb-5">
-      <div class="col-lg-8 col-12">
-        <h2 class="footer-cta-title mb-4">Ready to move<br><span class="serif-italic-red">stress-free?</span></h2>
-        <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="footer-cta-btn btn btn-outline-light rounded-pill px-4 py-3">
-          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" class="me-2 btn-icon-svg"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          +971 52 440 2005
+  <!-- CTA -->
+  <div class="ftr__cta">
+    <button class="ftr__top" id="ftrTop" aria-label="Back to top">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4"><line x1="12" y1="19" x2="12" y2="5"/><polyline points="5 12 12 5 19 12"/></svg>
+    </button>
+    <div class="container ftr__cta-inner">
+      <p class="ftr__eyebrow">Safe &amp; Secure Movers Dubai</p>
+      <h2>Ready to move<br><em>stress-free?</em></h2>
+      <div class="ftr__btns">
+        <a href="tel:+971524402005" class="ftr__btn ftr__btn--solid">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+          <span>+971 52 440 2005</span>
+        </a>
+        <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" rel="noopener" class="ftr__btn ftr__btn--ghost">
+          <span>Chat on WhatsApp</span>
         </a>
       </div>
     </div>
   </div>
 
-  <div class="container position-relative z-index-5 pb-4">
-    <div class="row g-4 justify-content-between align-items-start mb-4">
+  <!-- MAIN -->
+  <div class="ftr__main">
+    <!-- background image: apni image ka naam yahan -->
+    <div class="ftr__main__bg"><img src="footer.jpg" alt=""></div>
 
-      <div class="col-xl-4 col-lg-4 col-md-5 col-12 brand-col-wrapper">
-        <div class="footer-logo-box">
-          <img src="safe_secure_logo_red_white_Nero_AI_Background_Remover_transparent.png" alt="Safe & Secure Movers Logo">
-        </div>
-        <div>
-          <div class="footer-brand-title">Safe &amp; Secure</div>
-          <div class="footer-brand-sub">Movers Dubai</div>
-        </div>
-        
-        <ul class="list-unstyled footer-contact-list m-0 p-0">
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-            <span>Phone: <a href="tel:+971524402005">+971 52 440 2005</a></span>
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
-            <span><a href="mailto:info@safeandsecuremovers.com">info@safeandsecuremovers.com</a></span>
-          </li>
-          <li>
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" class="icon-red-tint"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg>
-            <span style="color: #8a8a8a;">Shop # 6, Mohammad Hassan Al Shaikh Building, Naif Road, Deira-Al Murar, Dubai</span>
-          </li>
-        </ul>
+    <div class="container">
+      <div class="row ftr__row g-4 g-lg-5">
 
-        <div class="d-flex gap-2 pt-3">
-          <a href="https://www.facebook.com/people/Safe-Secure-Movers/61564820282959/" target="_blank" class="footer-social-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path></svg>
+        <!-- BRAND -->
+        <div class="col-lg-4 col-md-6 col-12 ftr__col ftr__brand">
+          <a href="index.html" class="ftr__logo">
+            <img src="WhatsApp_Image_2026-07-14_at_6.08.46_AM-removebg-preview.png" alt="Safe &amp; Secure Movers Dubai">
           </a>
-          <a href="#" class="footer-social-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-          </a>
-          <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" class="footer-social-icon">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"></path></svg>
-          </a>
+          <p class="ftr__about">Dubai's trusted relocation partner since 2012 — serving every emirate across the UAE. Fully insured, GPS-tracked and priced upfront. Over 15,000 moves, and counting.</p>
+          <div class="ftr__chips">
+            <span class="ftr__chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg> Fully Insured</span>
+            <span class="ftr__chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><circle cx="12" cy="12" r="9"/><polyline points="12 7 12 12 16 14"/></svg> On-Time</span>
+            <span class="ftr__chip"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M20 6 9 17l-5-5"/></svg> Fixed Price</span>
+          </div>
+          <div class="ftr__social">
+            <a href="https://www.facebook.com/people/Safe-Secure-Movers/61564820282959/" target="_blank" rel="noopener" aria-label="Facebook"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="#" aria-label="Instagram"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="2" width="20" height="20" rx="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://api.whatsapp.com/send/?phone=971556255690" target="_blank" rel="noopener" aria-label="WhatsApp"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/></svg></a>
+          </div>
         </div>
-      </div>
 
-      <div class="col-xl-3 col-lg-3 col-md-3 col-12">
-        <div class="footer-grid-heading">
-          <span>Quick Links</span>
-          <span class="footer-grid-heading-arrow"></span>
+        <!-- SERVICES -->
+        <div class="col-lg-3 col-md-6 col-6 ftr__col">
+          <h3 class="ftr__head">Services</h3>
+          <ul class="ftr__links">
+            <li><a href="services.html">Household Moving</a></li>
+            <li><a href="services.html">Office Relocation</a></li>
+            <li><a href="services.html">Packing &amp; Unpacking</a></li>
+            <li><a href="services.html">Storage &amp; Warehousing</a></li>
+            <li><a href="services.html">Dismantle &amp; Assembly</a></li>
+            <li><a href="services.html">Furniture Moving</a></li>
+          </ul>
         </div>
-        <ul class="footer-links-list list-unstyled">
-          <li><a href="#home">Home</a></li>
-          <li><a href="#about">About us</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#faq">Blogs</a></li>
-          <li><a href="#quote">Contact Us</a></li>
-        </ul>
-      </div>
 
-      <div class="col-xl-3 col-lg-3 col-md-4 col-12">
-        <div class="footer-grid-heading">
-          <span>Useful Links</span>
-          <span class="footer-grid-heading-arrow"></span>
+        <!-- COMPANY -->
+        <div class="col-lg-2 col-md-6 col-6 ftr__col">
+          <h3 class="ftr__head">Company</h3>
+          <ul class="ftr__links">
+            <li><a href="index.html">Home</a></li>
+            <li><a href="about.html">About Us</a></li>
+            <li><a href="index.html#process">Our Process</a></li>
+            <li><a href="index.html#faq">FAQs</a></li>
+            <li><a href="contact.html">Contact</a></li>
+          </ul>
         </div>
-        <ul class="footer-links-list list-unstyled">
-          <li><a href="#services">Transportation Service</a></li>
-          <li><a href="#services">Household Moving</a></li>
-          <li><a href="#services">Commercial Movers</a></li>
-          <li><a href="#services">Warehouse &amp; Storage</a></li>
-          <li><a href="#services">House &amp; Office Shifting</a></li>
-        </ul>
+
+        <!-- CONTACT + HOURS -->
+        <div class="col-lg-3 col-md-6 col-12 ftr__col">
+          <h3 class="ftr__head">Get in Touch</h3>
+          <ul class="ftr__contact mb-3">
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><a href="tel:+971524402005">+971 52 440 2005</a></li>
+            <li><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg><a href="mailto:info@safeandsecuremovers.com">info@safeandsecuremovers.com</a></li>
+          </ul>
+          <div class="ftr__hours">
+            <div class="ftr__hours-row"><span>Mon &ndash; Thu</span><b>8:00 &ndash; 21:00</b></div>
+            <div class="ftr__hours-row"><span>Fri &ndash; Sat</span><b>9:00 &ndash; 20:00</b></div>
+            <div class="ftr__hours-row"><span>Sunday</span><b>On call</b></div>
+            <div class="ftr__live"><span class="ftr__dot"></span> Available for moves today</div>
+          </div>
+        </div>
+
       </div>
 
-    </div>
-
-    <div class="row pt-4 border-top border-secondary-subtle align-items-center justify-content-between copyright-row-box">
-      <div class="col-sm-auto col-12">
-        <p class="copyright-text m-0">© 2026 <a href="#">safeandsecuremovers.com</a> | All rights Reserved</p>
-      </div>
-      <div class="col-sm-auto col-12 d-flex align-items-center justify-content-center gap-2 live-indicator-box">
-        <span class="position-relative d-flex h-2 w-2">
-          <span class="animate-ping position-absolute inline-flex h-full w-full rounded-circle bg-success opacity-75"></span>
-          <span class="position-relative inline-flex rounded-circle h-2 w-2 bg-success"></span>
-        </span>
-        <span class="indicator-text">Available for moves today</span>
+      <div class="ftr__bottom">
+        <p class="m-0">&copy; 2026 <a href="#">safeandsecuremovers.com</a> &mdash; All rights reserved.</p>
+        <div class="ftr__legal">
+          <a href="#">Privacy Policy</a>
+          <a href="#">Terms of Service</a>
+          <a href="#">Sitemap</a>
+        </div>
       </div>
     </div>
   </div>
 </footer>
+
+<script>
+  document.getElementById('ftrTop').addEventListener('click', function () {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  });
+</script>
+
+<script>
+    // Nav — scroll par stuck state
+(function () {
+  var nav = document.querySelector('.site-nav');
+  if (!nav) return;
+
+  var ticking = false;
+  function update(){
+    nav.classList.toggle('is-stuck', window.scrollY > 40);
+    ticking = false;
+  }
+  window.addEventListener('scroll', function(){
+    if (!ticking){ requestAnimationFrame(update); ticking = true; }
+  }, { passive:true });
+  update();
+})();
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="script.js"></script>
 </body>
