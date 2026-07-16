@@ -2575,3 +2575,72 @@ html, body {
   padding: 7px 16px;               /* andar ka gap */
   border-radius: 4px;              /* 50px = full round pill */
 }
+/* ═══════════ DESKTOP HERO — reference look (sirf ≥992px) ═══════════ */
+@media (min-width: 992px) {
+
+  /* poori left column left-align */
+  .hero-eyebrow,
+  .hero-title,
+  .hero-desc,
+  .hero-btns { text-align: left !important; }
+  .hero-content .row { justify-content: flex-start; }
+
+  /* red badge with shield */
+  .hero-eyebrow { margin: 0 0 22px; }
+  .hero-eyebrow__badge {
+    display: inline-flex; align-items: center; gap: 8px;
+    background: var(--red); color: #fff;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.82rem; font-weight: 700;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    padding: 9px 18px; border-radius: 8px;
+  }
+  .hero-eyebrow__ico { width: 15px; height: 15px; }
+
+  /* heading — bold sans, tight (serif hataya) */
+  .hero-title {
+    font-family: 'Inter', sans-serif;
+    font-weight: 800;
+    font-size: clamp(3rem, 5.2vw, 5rem);
+    line-height: 1.02; letter-spacing: -0.02em;
+    color: #fff; margin: 0;
+  }
+  .hero-title .hero-line1,
+  .hero-title .hero-line2 { display: block; }
+  .hero-title .accent-g { color: var(--red); font-style: normal; font-weight: 800; }
+
+  /* heading ke neeche red line */
+  .hero-title::after {
+    content: ""; display: block;
+    width: 70px; height: 3px; background: var(--red);
+    margin: 20px 0 0;
+  }
+
+  /* description */
+  .hero-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.05rem; line-height: 1.6;
+    color: rgba(240,240,240,0.72);
+    max-width: 440px; margin: 22px 0 30px;
+  }
+
+  /* buttons */
+  .hero-btns { display: flex; gap: 14px; }
+  .btn-hero-primary,
+  .btn-hero-outline {
+    display: inline-flex; align-items: center; gap: 10px;
+    height: 56px; padding: 0 26px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.85rem; font-weight: 700;
+    letter-spacing: 0.08em; text-transform: uppercase;
+    border-radius: 6px;
+  }
+  .btn-hero-primary { background: var(--red); color: #fff; border: none; }
+  .btn-hero-primary:hover { background: #a0000a; color: #fff; }
+  .btn-hero-outline { background: transparent; color: #fff; border: 1.5px solid rgba(255,255,255,0.55); }
+  .btn-hero-outline:hover { background: rgba(255,255,255,0.08); border-color: #fff; color: #fff; }
+
+  /* features strip — solid red icon circles (reference jaisa) */
+  .feature-icon { background: var(--red); border: none; }
+  .feature-icon svg { stroke: #fff; }
+}
