@@ -9,6 +9,7 @@
   
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&family=Dancing+Script:wght@600&family=Cinzel:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet"/>
   <link rel="stylesheet" href="style.css">
+ 
   <style>
 :root{
   --red:#c0000c;
@@ -307,7 +308,7 @@ body{ margin:0; background:#000; font-family:'Poppins',system-ui,sans-serif; col
     </ul>
   </div>
 </div><!-- ═══════════════════════ HERO SECTION ═══════════════════════ -->
-<section class="hero-section">
+<section class="hero">
   <div class="hero-bg" aria-hidden="true"></div>
 
   <div class="container-fluid px-4 px-sm-5 hero-content">
@@ -344,6 +345,47 @@ body{ margin:0; background:#000; font-family:'Poppins',system-ui,sans-serif; col
 
   <!-- Curved red shape at bottom (mobile only) -->
   <div class="hero-curve" aria-hidden="true"></div>
+
+  <!-- FEATURES STRIP (hero ke ANDAR — desktop par visible, mobile par hidden) -->
+  <div class="hero-features">
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Safe Handling</div>
+        <div class="feature-sub">We treat your belongings with maximum care.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">On-Time Delivery</div>
+        <div class="feature-sub">Punctual, reliable &amp; always on schedule.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Secure Packing</div>
+        <div class="feature-sub">High-quality packing for complete protection.</div>
+      </div>
+    </div>
+    <div class="feature-item">
+      <div class="feature-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      </div>
+      <div>
+        <div class="feature-title">Expert Team</div>
+        <div class="feature-sub">Trained professionals you can trust.</div>
+      </div>
+    </div>
+  </div>
+
 </section>
 
 <!-- ═══════════════════════ MOBILE STATS STRIP ═══════════════════════ -->
@@ -380,45 +422,6 @@ body{ margin:0; background:#000; font-family:'Poppins',system-ui,sans-serif; col
   </div>
 </section>
 
-<!-- ═══════════════════════ FEATURES (desktop strip) ═══════════════════════ -->
-<div class="hero-features fade-reveal">
-  <div class="feature-item">
-    <div class="feature-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
-    </div>
-    <div>
-      <div class="feature-title">Safe Handling</div>
-      <div class="feature-sub">We treat your belongings with maximum care.</div>
-    </div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-    </div>
-    <div>
-      <div class="feature-title">On-Time Delivery</div>
-      <div class="feature-sub">Punctual, reliable &amp; always on schedule.</div>
-    </div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
-    </div>
-    <div>
-      <div class="feature-title">Secure Packing</div>
-      <div class="feature-sub">High-quality packing for complete protection.</div>
-    </div>
-  </div>
-  <div class="feature-item">
-    <div class="feature-icon">
-      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
-    </div>
-    <div>
-      <div class="feature-title">Expert Team</div>
-      <div class="feature-sub">Trained professionals you can trust.</div>
-    </div>
-  </div>
-</div>
 
 <main>
     <section class="premium-about">
